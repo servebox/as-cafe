@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<componentPackage>
+    <component id="WindowedApplication" class="org.servebox.cafe.core.application.WindowedApplication"/>
+</componentPackage>

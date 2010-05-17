@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" version="3">
+  <includeClasses>
+    <classEntry path="org.servebox.cafe.core.view.View"/>
+    <classEntry path="org.servebox.cafe.core.view.Presenter"/>
+    <classEntry path="org.servebox.cafe.core.layout.LayoutAreaManager"/>
+    <classEntry path="org.servebox.cafe.core.layout.LayoutArea"/>
+    <classEntry path="org.servebox.cafe.core.layout.impl.DelegateLayoutArea"/>
+    <classEntry path="org.servebox.cafe.core.Container"/>
+    <classEntry path="org.servebox.cafe.core.application.WindowedApplication"/>
+    <classEntry path="org.servebox.cafe.core.application.ApplicationInitializer"/>
+    <classEntry path="org.servebox.cafe.core.application.CafeApplication"/>
+    <classEntry path="org.servebox.cafe.core.spring.FlexXmlApplicationContext"/>
+    <classEntry path="org.servebox.cafe.core.spring.ApplicationContext"/>
+    <classEntry path="org.servebox.cafe.core.spring.ApplicationContextListener"/>
+    <classEntry path="org.servebox.cafe.core.layout.impl.DefaultLayoutAreaManagerImpl"/>
+    <classEntry path="org.servebox.cafe.core.modularity.ApplicationUnit"/>
+    <classEntry path="org.servebox.cafe.core.model.PresentationModel"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="manifest.xml" namespace="http://servebox.org/flex/cafe/2010"/>
+  </namespaceManifests>
+</flexLibProperties>
