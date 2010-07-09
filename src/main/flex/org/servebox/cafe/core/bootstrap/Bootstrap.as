@@ -7,7 +7,9 @@ package org.servebox.cafe.core.bootstrap
 	public interface Bootstrap
 	{
 		function initialize( context : ApplicationContext ) : void;
-		function getApplicationUnits( context : ApplicationContext ) : Vector.<ApplicationUnit>;
+		// FIXME Change with vector as soon as the VectorReferenceResolver provided by Spring has been fixed
+		function get applicationUnits() : Array /*Vector.<ApplicationUnit>*/;
+		function set applicationUnits( units : Array /*Vector.<ApplicationUnit>*/) : void;
 		function postInitialize( context : ApplicationContext ) : void;
 	}
 }

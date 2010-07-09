@@ -16,6 +16,8 @@
     <classEntry path="org.servebox.cafe.core.layout.impl.DefaultLayoutAreaManagerImpl"/>
     <classEntry path="org.servebox.cafe.core.modularity.ApplicationUnit"/>
     <classEntry path="org.servebox.cafe.core.model.PresentationModel"/>
+    <classEntry path="org.servebox.cafe.core.bootstrap.impl.DefaultBootstrapImpl"/>
+    <classEntry path="org.servebox.cafe.core.modularity.LocalApplicationUnitImpl"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests>

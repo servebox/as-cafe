@@ -17,6 +17,7 @@ package org.servebox.cafe.core
 		private static var allowConstruction : Boolean = false;
 		private static var instance : Container;
 		private var application : CafeApplication;
+		private var _bootstrap : Bootstrap;
 		
 		public function Container()
 		{
@@ -54,18 +55,19 @@ package org.servebox.cafe.core
 		
 		private function bootstrap() : void
 		{
-			var bootstrap : Bootstrap = getBootstrap();
+			_bootstrap = getBootstrap();
 			// Initialize the bootstrap
-			bootstrap.initialize( application.getMainContext() );
+			_bootstrap.initialize( application.getMainContext() );
 			// Register the applicative modules
-			registerApplicationUnits( bootstrap.getApplicationUnits( application.getMainContext() ) );
+			registerApplicationUnits( _bootstrap.applicationUnits );
 			// Register the application model : could this be done using autowiring ? I guess so...
 			//var models : Vector.<PresentationModel> = bootstrap.getPresentationModels( application.getMainContext() );
 			// Performs additional bootstrap tasks, if required
-			bootstrap.postInitialize( application.getMainContext() );
+			_bootstrap.postInitialize( application.getMainContext() );
 		}
 		
-		private function registerApplicationUnits( units : Vector.<ApplicationUnit> ) : void
+		// FIXME Change to vector
+		private function registerApplicationUnits( units : Array /*Vector.<ApplicationUnit>*/ ) : void
 		{
 			// Creating the application units definitions
 			
