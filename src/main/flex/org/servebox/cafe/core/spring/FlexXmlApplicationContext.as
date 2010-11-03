@@ -23,15 +23,9 @@ package org.servebox.cafe.core.spring
 			this._listener = l;
 		}
 		
-		override public function load():void
+		override protected function completeHandler(event:Event):void
 		{
-			addEventListener(Event.COMPLETE, completeHandler);
-			super.load();
-		}
-		
-		protected function completeHandler(event:Event):void
-		{
-			removeEventListener(Event.COMPLETE, completeHandler);
+			super.completeHandler( event );
 			_listener.applicationContextReady();
 		}
 		
