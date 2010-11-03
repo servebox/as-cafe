@@ -7,6 +7,6 @@ package org.servebox.cafe.core.application
 
 	public interface CafeApplication extends IVisualElementContainer
 	{
-		function getMainContext() : ApplicationContext;
+		function getContext() : ApplicationContext;
 	}
 }

@@ -4,7 +4,7 @@ package org.servebox.cafe.core.layout
 
 	public interface LayoutAreaManager
 	{
-		function addArea( id : String, area : LayoutArea ) : void;
-		function getArea( id : String ) : LayoutArea;
+		function addArea( regionName : String, area : LayoutArea ) : void;
+		function getArea( regionName : String ) : LayoutArea;
 	}
 }

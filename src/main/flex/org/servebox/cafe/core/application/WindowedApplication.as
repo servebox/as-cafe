@@ -15,7 +15,7 @@ package org.servebox.cafe.core.application
 			_context = ApplicationInitializer.getDefaultContext();
 		}
 		
-		public function getMainContext() : ApplicationContext
+		public function getContext() : ApplicationContext
 		{
 			return _context;
 		}

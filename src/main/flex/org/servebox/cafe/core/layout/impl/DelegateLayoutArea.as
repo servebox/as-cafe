@@ -16,7 +16,7 @@ package org.servebox.cafe.core.layout.impl
 	{
 		private var _container : IVisualElementContainer;
 		private var _views : Vector.<View> = new Vector.<View>();
-		private var _id : String;
+		private var _name : String;
 		
 		public function DelegateLayoutArea( container : IVisualElementContainer = null )
 		{
@@ -46,8 +46,10 @@ package org.servebox.cafe.core.layout.impl
 		public function set container( value : IVisualElementContainer ) : void
 		{
 			_container = value;
-			var manager : LayoutAreaManager = Container.getInstance().getLayoutAreaManager();
-			manager.addArea( id, this );
+			if( value && name )
+			{
+				register();
+			}
 		}
 		
 		public function get container() : IVisualElementContainer
@@ -55,15 +57,25 @@ package org.servebox.cafe.core.layout.impl
 			return _container;
 		}
 		
-		[Bindable ]
-		public function get id() : String
+		[Bindable]
+		public function get name() : String
 		{
-			return _id;
+			return _name;
 		}
 		
-		public function set id( value : String ): void
+		public function set name( value : String ): void
 		{
-			_id = value;
+			_name = value;
+			if( value && name )
+			{
+				register();
+			}
+		}
+		
+		private function register() : void
+		{
+			var manager : LayoutAreaManager = Container.getInstance().getLayoutAreaManager();
+			manager.addArea( name, this );
 		}
 		
 	}

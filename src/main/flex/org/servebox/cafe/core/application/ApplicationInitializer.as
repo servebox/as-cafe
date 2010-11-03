@@ -31,6 +31,11 @@ package org.servebox.cafe.core.application
 			return new FlexXmlApplicationContext( getConfigLocations() );
 		}
 		
+		public static function getContextInstance( configLocations : Array, parent : ApplicationContext ) : ApplicationContext
+		{
+			return new FlexXmlApplicationContext( configLocations, parent );
+		}
+		
 		protected static function getConfigLocations() : Array
 		{
 			return ["cafe.xml"];

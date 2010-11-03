@@ -1,8 +1,11 @@
 package org.servebox.cafe.core.bootstrap.impl
 {
+	import flash.utils.Dictionary;
+	
 	import org.servebox.cafe.core.bootstrap.Bootstrap;
 	import org.servebox.cafe.core.modularity.ApplicationUnit;
 	import org.servebox.cafe.core.spring.ApplicationContext;
+
 
 	public class DefaultBootstrapImpl implements Bootstrap
 	{
@@ -10,7 +13,6 @@ package org.servebox.cafe.core.bootstrap.impl
 		
 		public function initialize( context : ApplicationContext ) : void
 		{
-			
 		}
 		
 		public function get applicationUnits() : Array/*Vector.<ApplicationUnit>*/

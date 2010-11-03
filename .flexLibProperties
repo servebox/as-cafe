@@ -2,7 +2,6 @@
 <flexLibProperties includeAllClasses="true" version="3">
   <includeClasses>
     <classEntry path="org.servebox.cafe.core.view.View"/>
-    <classEntry path="org.servebox.cafe.core.view.Presenter"/>
     <classEntry path="org.servebox.cafe.core.layout.LayoutAreaManager"/>
     <classEntry path="org.servebox.cafe.core.layout.LayoutArea"/>
     <classEntry path="org.servebox.cafe.core.layout.impl.DelegateLayoutArea"/>
@@ -18,6 +17,16 @@
     <classEntry path="org.servebox.cafe.core.model.PresentationModel"/>
     <classEntry path="org.servebox.cafe.core.bootstrap.impl.DefaultBootstrapImpl"/>
     <classEntry path="org.servebox.cafe.core.modularity.LocalApplicationUnitImpl"/>
+    <classEntry path="org.servebox.cafe.core.util.ApplicationUnitUtils"/>
+    <classEntry path="org.servebox.cafe.core.observer.Observable"/>
+    <classEntry path="org.servebox.cafe.core.observer.Observer"/>
+    <classEntry path="org.servebox.cafe.core.observer.Notification"/>
+    <classEntry path="org.servebox.cafe.core.data.AbstractDataModel"/>
+    <classEntry path="org.servebox.cafe.core.data.ModelState"/>
+    <classEntry path="org.servebox.cafe.core.data.ModelStateNotification"/>
+    <classEntry path="org.servebox.cafe.core.command.Command"/>
+    <classEntry path="org.servebox.cafe.core.command.CommandBinding"/>
+    <classEntry path="org.servebox.cafe.core.command.StateCommand"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests>

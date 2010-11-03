@@ -4,15 +4,18 @@ package org.servebox.cafe.core.spring
 	
 	import mx.modules.Module;
 	
+	import org.springextensions.actionscript.context.IApplicationContext;
 	import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
+	import org.springextensions.actionscript.context.support.XMLApplicationContext;
+
 	
-	public class FlexXmlApplicationContext extends FlexXMLApplicationContext implements ApplicationContext
+	public class FlexXmlApplicationContext extends XMLApplicationContext implements ApplicationContext
 	{
 		private var _listener : ApplicationContextListener;
 		
-		public function FlexXmlApplicationContext(source:*=null, ownerModule:Module=null)
+		public function FlexXmlApplicationContext(source:*=null, parent:IApplicationContext=null)
 		{
-			super(source, ownerModule);
+			super(source, parent);
 		}
 		
 		public function setListener( l : ApplicationContextListener ) : void
@@ -20,12 +23,17 @@ package org.servebox.cafe.core.spring
 			this._listener = l;
 		}
 		
-		override protected function completeHandler(event:Event):void
+		override public function load():void
 		{
-			super.completeHandler(event);
-			_listener.applicationContextReady();
+			addEventListener(Event.COMPLETE, completeHandler);
+			super.load();
 		}
 		
+		protected function completeHandler(event:Event):void
+		{
+			removeEventListener(Event.COMPLETE, completeHandler);
+			_listener.applicationContextReady();
+		}
 		
 	}
 }
