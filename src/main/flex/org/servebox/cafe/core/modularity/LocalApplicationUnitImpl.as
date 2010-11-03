@@ -1,14 +1,23 @@
 package org.servebox.cafe.core.modularity
 {
+	import org.servebox.cafe.core.Container;
+	import org.servebox.cafe.core.application.ApplicationInitializer;
+	import org.servebox.cafe.core.layout.LayoutAreaManager;
 	import org.servebox.cafe.core.spring.ApplicationContext;
+	import org.servebox.cafe.core.spring.ApplicationContextListener;
+	import org.servebox.cafe.core.util.ApplicationUnitUtils;
+
 	
-	public class LocalApplicationUnitImpl implements ApplicationUnit
+	public class LocalApplicationUnitImpl implements ApplicationUnit, ApplicationContextListener
 	{
 		private var _id : String;
 		private var _loadAtStartup  :Boolean = false;
+		private var _configLocations : Array;
+		private var _context : ApplicationContext;
 		
 		public function LocalApplicationUnitImpl()
 		{
+			super();
 		}
 		
 		public function get id():String
@@ -33,15 +42,44 @@ package org.servebox.cafe.core.modularity
 		
 		public function get configLocations():Array
 		{
-			return null;
+			if( _configLocations == null )
+			{
+				_configLocations = [ApplicationUnitUtils.getDefaultContextLocation( this )];
+			}
+			return _configLocations;
 		}
 		
 		public function set configLocations(value:Array):void
 		{
+			_configLocations = value;
+		}
+		
+		protected function getContext() : ApplicationContext
+		{
+			return _context;
+		}
+		
+		protected function initializeContext( parentContext : ApplicationContext ) : void
+		{
+			_context = ApplicationInitializer.getContextInstance( configLocations, parentContext );
 		}
 		
 		public function prepare(parentContext:ApplicationContext):void
 		{
+			initializeContext( parentContext );
+			// Should we do that ? I guess so
+			getContext().setListener( this );
+			getContext().load();
+		}
+		
+		public function applicationContextReady() : void
+		{
+			start();
+		}
+		
+		public function getLayoutAreaManager() : LayoutAreaManager
+		{
+			return Container.getInstance().getLayoutAreaManager();
 		}
 		
 		public function start():void
