@@ -1,11 +1,10 @@
 package org.servebox.cafe.core.spring
 {
 	import flash.events.Event;
+	import flash.utils.getQualifiedClassName;
 	
-	import mx.modules.Module;
-	
+	import org.as3commons.lang.ClassUtils;
 	import org.springextensions.actionscript.context.IApplicationContext;
-	import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
 	import org.springextensions.actionscript.context.support.XMLApplicationContext;
 
 	
@@ -27,6 +26,11 @@ package org.servebox.cafe.core.spring
 		{
 			super.completeHandler( event );
 			_listener.applicationContextReady();
+		}
+		
+		public function getObjectFromApplicationUnit( applicationUnitClass : Class, obj : Class ) : *
+		{
+			return getObject( getQualifiedClassName(applicationUnitClass) + "." + ClassUtils.getName(obj) );
 		}
 		
 	}

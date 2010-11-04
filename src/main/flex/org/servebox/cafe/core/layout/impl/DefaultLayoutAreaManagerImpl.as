@@ -2,10 +2,12 @@ package org.servebox.cafe.core.layout.impl
 {
 	import flash.utils.Dictionary;
 	
+	import mx.core.IVisualElement;
 	import mx.core.IVisualElementContainer;
 	
 	import org.servebox.cafe.core.layout.LayoutArea;
 	import org.servebox.cafe.core.layout.LayoutAreaManager;
+	import org.servebox.cafe.core.view.View;
 	
 	public class DefaultLayoutAreaManagerImpl implements LayoutAreaManager
 	{
@@ -20,6 +22,11 @@ package org.servebox.cafe.core.layout.impl
 		public function getArea(id:String):LayoutArea
 		{
 			return areas[id];
+		}
+		
+		public function insertInArea(id:String, view : View ) : void
+		{
+			getArea(id).add(view);
 		}
 	}
 }
