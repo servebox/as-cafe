@@ -11,7 +11,7 @@ package org.servebox.cafe.core.application
 	public class ApplicationInitializer
 	{
 		
-		public static function prepare( application : Application ) : void
+		public static function prepare( application : spark.components.Application ) : void
 		{
 			if( ! ( application is CafeApplication ) )
 			{
