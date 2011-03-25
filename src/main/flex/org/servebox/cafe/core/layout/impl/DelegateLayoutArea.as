@@ -1,16 +1,12 @@
 package org.servebox.cafe.core.layout.impl
 {
-	import flash.sampler.getInvocationCount;
-	
-	import mx.core.IVisualElement;
+	import mx.collections.ArrayCollection;
 	import mx.core.IVisualElementContainer;
 	
 	import org.servebox.cafe.core.Container;
 	import org.servebox.cafe.core.layout.LayoutArea;
 	import org.servebox.cafe.core.layout.LayoutAreaManager;
 	import org.servebox.cafe.core.view.View;
-	
-	import spark.components.NavigatorContent;
 	
 	public class DelegateLayoutArea implements LayoutArea
 	{
@@ -40,6 +36,16 @@ package org.servebox.cafe.core.layout.impl
 					break;
 				}
 			}
+		}
+		
+		public function getViews() : ArrayCollection
+		{
+			var viewList : ArrayCollection = new ArrayCollection();
+			for each ( var view : View in _views )
+			{
+				viewList.addItem(view);
+			}
+			return viewList;
 		}
 		
 		[Bindable]
