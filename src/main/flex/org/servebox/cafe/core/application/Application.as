@@ -17,7 +17,7 @@ package org.servebox.cafe.core.application
 		
 		public function getContext():ApplicationContext
 		{
-			return null;
+			return _context;
 		}
 	}
 }
