@@ -2,16 +2,16 @@ package org.servebox.cafe.core.bootstrap.impl
 {
 	import flash.utils.Dictionary;
 	
-	import org.servebox.cafe.core.bootstrap.Bootstrap;
-	import org.servebox.cafe.core.modularity.ApplicationUnit;
-	import org.servebox.cafe.core.spring.ApplicationContext;
+	import org.servebox.cafe.core.bootstrap.IBootstrap;
+	import org.servebox.cafe.core.modularity.IApplicationUnit;
+	import org.servebox.cafe.core.spring.IApplicationContext;
 
 
-	public class DefaultBootstrapImpl implements Bootstrap
+	public class DefaultBootstrapImpl implements IBootstrap
 	{
 		private var _applicationUnits : Array;
 		
-		public function initialize( context : ApplicationContext ) : void
+		public function initialize( context : IApplicationContext ) : void
 		{
 		}
 		
@@ -25,7 +25,7 @@ package org.servebox.cafe.core.bootstrap.impl
 			this._applicationUnits = units;
 		}
 		
-		public function postInitialize( context : ApplicationContext ) : void
+		public function postInitialize( context : IApplicationContext ) : void
 		{
 			
 		}

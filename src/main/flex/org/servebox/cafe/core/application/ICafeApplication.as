@@ -2,11 +2,11 @@ package org.servebox.cafe.core.application
 {
 	import mx.core.IVisualElementContainer;
 	
-	import org.servebox.cafe.core.spring.ApplicationContext;
+	import org.servebox.cafe.core.spring.IApplicationContext;
 	import org.springextensions.actionscript.context.IConfigurableApplicationContext;
 
-	public interface CafeApplication extends IVisualElementContainer
+	public interface ICafeApplication extends IVisualElementContainer
 	{
-		function getContext() : ApplicationContext;
+		function getContext() : IApplicationContext;
 	}
 }

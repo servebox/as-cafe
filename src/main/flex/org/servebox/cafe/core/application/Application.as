@@ -1,12 +1,12 @@
 package org.servebox.cafe.core.application
 {
-	import org.servebox.cafe.core.spring.ApplicationContext;
+	import org.servebox.cafe.core.spring.IApplicationContext;
 	
 	import spark.components.Application;
 	
-	public class Application extends spark.components.Application implements CafeApplication
+	public class Application extends spark.components.Application implements ICafeApplication
 	{
-		private var _context : ApplicationContext;
+		private var _context : IApplicationContext;
 		
 		public function Application()
 		{
@@ -15,7 +15,7 @@ package org.servebox.cafe.core.application
 			_context = ApplicationInitializer.getDefaultContext();			
 		}
 		
-		public function getContext():ApplicationContext
+		public function getContext():IApplicationContext
 		{
 			return _context;
 		}

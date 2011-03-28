@@ -7,10 +7,10 @@ package org.servebox.cafe.core.model
 	
 
 	import org.servebox.cafe.core.observer.Notification;
-	import org.servebox.cafe.core.observer.Observable;
-	import org.servebox.cafe.core.observer.Observer;
+	import org.servebox.cafe.core.observer.IObservable;
+	import org.servebox.cafe.core.observer.IObserver;
 
-	public class PresentationModel extends EventDispatcher implements Observer
+	public class PresentationModel extends EventDispatcher implements IObserver
 	{
 		private var notificationHandlers : Dictionary = null;
 		
@@ -43,7 +43,7 @@ package org.servebox.cafe.core.model
 			}
 		}
 		
-		public function update( source : Observable, notification : Notification ) : void
+		public function update( source : IObservable, notification : Notification ) : void
 		{
 			loadMetadata();
 			var handlers : Array = notificationHandlers[ notification.getType() ];

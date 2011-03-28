@@ -3,17 +3,17 @@ package org.servebox.cafe.core.observer
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 
-	public class AbstractObservable implements Observable
+	public class AbstractObservable implements IObservable
 	{
 		
 		private var observersDictionary : Dictionary = new Dictionary();
 		
 		private static const ALL_NOTIFICATIONS : String = "org.servebox.cafe.core.observer::AbstractObservable.ALL_NOTIFICATIONS";
 
-		public function registerObserver( o : Observer, notificationFilters : Array = null ) : void
+		public function registerObserver( o : IObserver, notificationFilters : Array = null ) : void
 		{
 			var observers : Array;
-			var obs : Observer
+			var obs : IObserver
 			// Observer instance will receive all notifications, whatever their types.
 			if( notificationFilters == null )
 			{
@@ -76,7 +76,7 @@ package org.servebox.cafe.core.observer
 			}
 		}
 		
-		public function unregisterObserver( o : Observer ) : void
+		public function unregisterObserver( o : IObserver ) : void
 		{
 			for each( var observers : Array in observersDictionary )
 			{
@@ -105,7 +105,7 @@ package org.servebox.cafe.core.observer
 			{
 				observers = [];
 			}
-			for each(var o : Observer in observers )
+			for each(var o : IObserver in observers )
 			{
 				o.update( this, notification );
 			}

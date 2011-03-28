@@ -1,6 +1,6 @@
 package org.servebox.cafe.core.spring
 {
-	public interface ApplicationContextListener
+	public interface IApplicationContextListener
 	{
 		function applicationContextReady() : void;
 	}

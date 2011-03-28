@@ -67,22 +67,14 @@
         </pluginRepositories>
 
         <build>
-            <extensions>
-              <!--extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-webdav-jackrabbit</artifactId>
-                <version>1.0-beta-7</version>
-              </extension-->
-            </extensions>
-
-
                 <plugins>
                         <plugin>
                                 <groupId>org.servebox.flex</groupId>
                                 <artifactId>flex-plugin</artifactId>
-                                <version>3.0.0-beta6</version>
+                                <version>3.0.0-beta7</version>
                                 <extensions>true</extensions>
                                 <configuration>
+                                        <optimize>false</optimize>
                                         <locales>
                                                 <locale>en_US</locale>
                                         </locales>
@@ -96,10 +88,6 @@
                                                         <artifactId>sparkskins</artifactId>
                                                 </themeDependency>
                                         </themeDependencies>
-                                        <!--localSdk>Flex 4.0</localSdk>
-                                        <eclipseExclusions>
-                                        <exclusion><groupId>com.adobe.flex.sdkcore</groupId></exclusion>
-                                        </eclipseExclusions-->
                                 </configuration>
                         </plugin>
         </plugins>
@@ -284,7 +272,6 @@
             <type>swc</type>
             <scope>external</scope>
         </dependency>
-        <!-- LIBRAIRIES -->
 		<!-- LIBRAIRIES -->
         <dependency>
                 <groupId>org.springextensions.actionscript</groupId>

@@ -8,16 +8,16 @@ package org.servebox.cafe.core.spring
 	import org.springextensions.actionscript.context.support.XMLApplicationContext;
 
 	
-	public class FlexXmlApplicationContext extends XMLApplicationContext implements ApplicationContext
+	public class FlexXmlApplicationContext extends XMLApplicationContext implements org.servebox.cafe.core.spring.IApplicationContext
 	{
-		private var _listener : ApplicationContextListener;
+		private var _listener : IApplicationContextListener;
 		
 		public function FlexXmlApplicationContext(source:*=null, parent:IApplicationContext=null)
 		{
 			super(source, parent);
 		}
 		
-		public function setListener( l : ApplicationContextListener ) : void
+		public function setListener( l : IApplicationContextListener ) : void
 		{
 			this._listener = l;
 		}

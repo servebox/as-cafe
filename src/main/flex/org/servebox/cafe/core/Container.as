@@ -2,23 +2,23 @@ package org.servebox.cafe.core
 {
 	import flash.utils.Dictionary;
 
-	import org.servebox.cafe.core.application.CafeApplication;
-	import org.servebox.cafe.core.bootstrap.Bootstrap;
-	import org.servebox.cafe.core.layout.LayoutAreaManager;
+	import org.servebox.cafe.core.application.ICafeApplication;
+	import org.servebox.cafe.core.bootstrap.IBootstrap;
+	import org.servebox.cafe.core.layout.ILayoutAreaManager;
 	import org.servebox.cafe.core.layout.impl.DefaultLayoutAreaManagerImpl;
-	import org.servebox.cafe.core.modularity.ApplicationUnit;
-	import org.servebox.cafe.core.spring.ApplicationContextListener;
-	import org.servebox.cafe.core.view.View;
+	import org.servebox.cafe.core.modularity.IApplicationUnit;
+	import org.servebox.cafe.core.spring.IApplicationContextListener;
+	import org.servebox.cafe.core.view.IView;
 
 
-	public class Container implements ApplicationContextListener
+	public class Container implements IApplicationContextListener
 	{
 		private static var allowConstruction : Boolean = false;
 		private static var instance : Container;
-		private var application : CafeApplication;
-		private var _bootstrap : Bootstrap;
+		private var application : ICafeApplication;
+		private var _bootstrap : IBootstrap;
 		private var _applicationUnitMap : Dictionary;
-		private var _layoutAreaManager : LayoutAreaManager;
+		private var _layoutAreaManager : ILayoutAreaManager;
 
 		public function Container()
 		{
@@ -28,7 +28,7 @@ package org.servebox.cafe.core
 			}
 		}
 
-		public static function create( application : CafeApplication ) : void
+		public static function create( application : ICafeApplication ) : void
 		{
 			if( getInstance() != null )
 			{
@@ -73,7 +73,7 @@ package org.servebox.cafe.core
 			// Creating the application units definitions map
 			// TODO Should be delegated to another object ?
 			_applicationUnitMap = new Dictionary();
-			for each( var unit : ApplicationUnit in units )
+			for each( var unit : IApplicationUnit in units )
 			{
 				_applicationUnitMap[ unit.id ] = unit;
 				// For each unit, if it is supposed to load at startup, preparing it
@@ -86,15 +86,15 @@ package org.servebox.cafe.core
 
 		private function createShell() : void
 		{
-			application.addElement( View( application.getContext().getObject("shellView") ) );
+			application.addElement( IView( application.getContext().getObject("shellView") ) );
 		}
 
-		public function getBootstrap() : Bootstrap
+		public function getBootstrap() : IBootstrap
 		{
-			return Bootstrap( application.getContext().getObject("bootstrap") );
+			return IBootstrap( application.getContext().getObject("bootstrap") );
 		}
 
-		public function getLayoutAreaManager() : LayoutAreaManager
+		public function getLayoutAreaManager() : ILayoutAreaManager
 		{
 			if( _layoutAreaManager )
 			{
@@ -102,7 +102,7 @@ package org.servebox.cafe.core
 			}
 			try
 			{
-				_layoutAreaManager = LayoutAreaManager( application.getContext().getObject("layoutAreaManager") );
+				_layoutAreaManager = ILayoutAreaManager( application.getContext().getObject("layoutAreaManager") );
 			}
 			catch( e : Error )
 			{

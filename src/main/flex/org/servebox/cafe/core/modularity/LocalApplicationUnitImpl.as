@@ -2,20 +2,20 @@ package org.servebox.cafe.core.modularity
 {
 	import org.servebox.cafe.core.Container;
 	import org.servebox.cafe.core.application.ApplicationInitializer;
-	import org.servebox.cafe.core.layout.LayoutArea;
-	import org.servebox.cafe.core.layout.LayoutAreaManager;
-	import org.servebox.cafe.core.spring.ApplicationContext;
-	import org.servebox.cafe.core.spring.ApplicationContextListener;
+	import org.servebox.cafe.core.layout.ILayoutArea;
+	import org.servebox.cafe.core.layout.ILayoutAreaManager;
+	import org.servebox.cafe.core.spring.IApplicationContext;
+	import org.servebox.cafe.core.spring.IApplicationContextListener;
 	import org.servebox.cafe.core.util.ApplicationUnitUtils;
-	import org.servebox.cafe.core.view.View;
+	import org.servebox.cafe.core.view.IView;
 
 	
-	public class LocalApplicationUnitImpl implements ApplicationUnit, ApplicationContextListener
+	public class LocalApplicationUnitImpl implements IApplicationUnit, IApplicationContextListener
 	{
 		private var _id : String;
 		private var _loadAtStartup  :Boolean = false;
 		private var _configLocations : Array;
-		private var _context : ApplicationContext;
+		private var _context : IApplicationContext;
 		
 		public function LocalApplicationUnitImpl()
 		{
@@ -56,17 +56,17 @@ package org.servebox.cafe.core.modularity
 			_configLocations = value;
 		}
 		
-		protected function getContext() : ApplicationContext
+		protected function getContext() : IApplicationContext
 		{
 			return _context;
 		}
 		
-		protected function initializeContext( parentContext : ApplicationContext ) : void
+		protected function initializeContext( parentContext : IApplicationContext ) : void
 		{
 			_context = ApplicationInitializer.getContextInstance( configLocations, parentContext );
 		}
 		
-		public function prepare(parentContext:ApplicationContext):void
+		public function prepare(parentContext:IApplicationContext):void
 		{
 			initializeContext( parentContext );
 			// Should we do that ? I guess so
@@ -79,15 +79,15 @@ package org.servebox.cafe.core.modularity
 			start();
 		}
 		
-		public function getLayoutAreaManager() : LayoutAreaManager
+		public function getLayoutAreaManager() : ILayoutAreaManager
 		{
 			return Container.getInstance().getLayoutAreaManager();
 		}
 		
 		public function cleanLayout( layoutName : String ) : void
 		{
-			var layoutArea : LayoutArea = getLayoutAreaManager().getArea(layoutName);
-			for each ( var view : View in layoutArea.getViews() )
+			var layoutArea : ILayoutArea = getLayoutAreaManager().getArea(layoutName);
+			for each ( var view : IView in layoutArea.getViews() )
 			{
 				layoutArea.remove(view);
 			}

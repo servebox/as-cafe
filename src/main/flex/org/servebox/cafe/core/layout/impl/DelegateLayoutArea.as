@@ -4,14 +4,14 @@ package org.servebox.cafe.core.layout.impl
 	import mx.core.IVisualElementContainer;
 	
 	import org.servebox.cafe.core.Container;
-	import org.servebox.cafe.core.layout.LayoutArea;
-	import org.servebox.cafe.core.layout.LayoutAreaManager;
-	import org.servebox.cafe.core.view.View;
+	import org.servebox.cafe.core.layout.ILayoutArea;
+	import org.servebox.cafe.core.layout.ILayoutAreaManager;
+	import org.servebox.cafe.core.view.IView;
 	
-	public class DelegateLayoutArea implements LayoutArea
+	public class DelegateLayoutArea implements ILayoutArea
 	{
 		private var _container : IVisualElementContainer;
-		private var _views : Vector.<View> = new Vector.<View>();
+		private var _views : Vector.<IView> = new Vector.<IView>();
 		private var _name : String;
 		
 		public function DelegateLayoutArea( container : IVisualElementContainer = null )
@@ -19,13 +19,13 @@ package org.servebox.cafe.core.layout.impl
 			this.container = container;
 		}
 		
-		public function add(view:View):void
+		public function add(view:IView):void
 		{
 			_views.push( view );
 			container.addElement( view );
 		}
 		
-		public function remove(view:View):void
+		public function remove(view:IView):void
 		{
 			container.removeElement( view );
 			for(var i : int = 0; i < _views.length; i++ )
@@ -41,7 +41,7 @@ package org.servebox.cafe.core.layout.impl
 		public function getViews() : ArrayCollection
 		{
 			var viewList : ArrayCollection = new ArrayCollection();
-			for each ( var view : View in _views )
+			for each ( var view : IView in _views )
 			{
 				viewList.addItem(view);
 			}
@@ -80,7 +80,7 @@ package org.servebox.cafe.core.layout.impl
 		
 		private function register() : void
 		{
-			var manager : LayoutAreaManager = Container.getInstance().getLayoutAreaManager();
+			var manager : ILayoutAreaManager = Container.getInstance().getLayoutAreaManager();
 			manager.addArea( name, this );
 		}
 		

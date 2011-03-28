@@ -10,7 +10,7 @@ package org.servebox.cafe.core.command
 	
 	public class CommandBinding extends EventDispatcher
 	{
-		private var _command : Command;
+		private var _command : ICommand;
 		
 		private var _target : IEventDispatcher;
 		
@@ -26,15 +26,15 @@ package org.servebox.cafe.core.command
 		}
 		
 		[Bindable("command_Change")]
-		public function get command():Command
+		public function get command():ICommand
 		{
 			return _command;
 		}
 
-		public function set command(value:Command):void
+		public function set command(value:ICommand):void
 		{
 			_command = value;
-			if( _command is StateCommand )
+			if( _command is IStateCommand )
 			{
 				if( setterWatcher )
 				{
@@ -95,7 +95,7 @@ package org.servebox.cafe.core.command
 		
 		private function triggerFired( e : Event ) : void
 		{
-			if( _command is StateCommand && StateCommand(_command).executable )
+			if( _command is IStateCommand && IStateCommand(_command).executable )
 			{
 				_command.execute();
 			}
