@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<flexLibProperties
-                                        version="3">
-            <includeClasses>
-                            <classEntry path="org.servebox.cafe.core.cafe"/>
-                            <classEntry path="org.servebox.cafe.core.command.CommandBinding"/>
-                            <classEntry path="org.servebox.cafe.core.command.ICommand"/>
-                            <classEntry path="org.servebox.cafe.core.command.IStateCommand"/>
-                            <classEntry path="org.servebox.cafe.core.model.PresentationModel"/>
-                            <classEntry path="org.servebox.cafe.core.layout.ILayoutAreaManager"/>
-                            <classEntry path="org.servebox.cafe.core.layout.impl.DefaultLayoutAreaManagerImpl"/>
-                            <classEntry path="org.servebox.cafe.core.layout.impl.DelegateLayoutArea"/>
-                            <classEntry path="org.servebox.cafe.core.layout.ILayoutArea"/>
-                            <classEntry path="org.servebox.cafe.core.Container"/>
-                            <classEntry path="org.servebox.cafe.core.util.ApplicationUnitUtils"/>
-                            <classEntry path="org.servebox.cafe.core.modularity.LocalApplicationUnitImpl"/>
-                            <classEntry path="org.servebox.cafe.core.modularity.IApplicationUnit"/>
-                            <classEntry path="org.servebox.cafe.core.data.ModelState"/>
-                            <classEntry path="org.servebox.cafe.core.data.ModelStateNotification"/>
-                            <classEntry path="org.servebox.cafe.core.data.AbstractDataModel"/>
-                            <classEntry path="org.servebox.cafe.core.application.ICafeApplication"/>
-                            <classEntry path="org.servebox.cafe.core.application.Application"/>
-                            <classEntry path="org.servebox.cafe.core.application.ApplicationInitializer"/>
-                            <classEntry path="org.servebox.cafe.core.application.WindowedApplication"/>
-                            <classEntry path="org.servebox.cafe.core.bootstrap.impl.DefaultBootstrapImpl"/>
-                            <classEntry path="org.servebox.cafe.core.bootstrap.IBootstrap"/>
-                            <classEntry path="org.servebox.cafe.core.view.IView"/>
-                            <classEntry path="org.servebox.cafe.core.observer.Notification"/>
-                            <classEntry path="org.servebox.cafe.core.observer.AbstractObservable"/>
-                            <classEntry path="org.servebox.cafe.core.observer.IObservable"/>
-                            <classEntry path="org.servebox.cafe.core.observer.IObserver"/>
-                            <classEntry path="org.servebox.cafe.core.spring.IApplicationContext"/>
-                            <classEntry path="org.servebox.cafe.core.spring.IApplicationContextListener"/>
-                            <classEntry path="org.servebox.cafe.core.spring.FlexXmlApplicationContext"/>
-                    </includeClasses>
-        <includeResources>
-                                </includeResources>
-        <namespaceManifests>
-                    </namespaceManifests>
-    </flexLibProperties>
+<flexLibProperties includeAllClasses="true" version="3">
+  <includeClasses>
+    <classEntry path="org.servebox.cafe.core.cafe"/>
+    <classEntry path="org.servebox.cafe.core.command.CommandBinding"/>
+    <classEntry path="org.servebox.cafe.core.command.ICommand"/>
+    <classEntry path="org.servebox.cafe.core.command.IStateCommand"/>
+    <classEntry path="org.servebox.cafe.core.model.PresentationModel"/>
+    <classEntry path="org.servebox.cafe.core.layout.ILayoutAreaManager"/>
+    <classEntry path="org.servebox.cafe.core.layout.impl.DefaultLayoutAreaManagerImpl"/>
+    <classEntry path="org.servebox.cafe.core.layout.impl.DelegateLayoutArea"/>
+    <classEntry path="org.servebox.cafe.core.layout.ILayoutArea"/>
+    <classEntry path="org.servebox.cafe.core.Container"/>
+    <classEntry path="org.servebox.cafe.core.util.ApplicationUnitUtils"/>
+    <classEntry path="org.servebox.cafe.core.modularity.LocalApplicationUnitImpl"/>
+    <classEntry path="org.servebox.cafe.core.modularity.IApplicationUnit"/>
+    <classEntry path="org.servebox.cafe.core.data.ModelState"/>
+    <classEntry path="org.servebox.cafe.core.data.ModelStateNotification"/>
+    <classEntry path="org.servebox.cafe.core.data.AbstractDataModel"/>
+    <classEntry path="org.servebox.cafe.core.application.ICafeApplication"/>
+    <classEntry path="org.servebox.cafe.core.application.Application"/>
+    <classEntry path="org.servebox.cafe.core.application.ApplicationInitializer"/>
+    <classEntry path="org.servebox.cafe.core.application.WindowedApplication"/>
+    <classEntry path="org.servebox.cafe.core.bootstrap.impl.DefaultBootstrapImpl"/>
+    <classEntry path="org.servebox.cafe.core.bootstrap.IBootstrap"/>
+    <classEntry path="org.servebox.cafe.core.view.IView"/>
+    <classEntry path="org.servebox.cafe.core.observer.Notification"/>
+    <classEntry path="org.servebox.cafe.core.observer.AbstractObservable"/>
+    <classEntry path="org.servebox.cafe.core.observer.IObservable"/>
+    <classEntry path="org.servebox.cafe.core.observer.IObserver"/>
+    <classEntry path="org.servebox.cafe.core.spring.IApplicationContext"/>
+    <classEntry path="org.servebox.cafe.core.spring.IApplicationContextListener"/>
+    <classEntry path="org.servebox.cafe.core.spring.FlexXmlApplicationContext"/>
+    <classEntry path="org.servebox.cafe.core.command.AbstractCommand"/>
+    <classEntry path="org.servebox.cafe.core.command.AbstractStateCommand"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

@@ -25,6 +25,19 @@ package org.servebox.cafe.core.bootstrap.impl
 			this._applicationUnits = units;
 		}
 		
+		public function getApplicationUnit( clazz : Class ) : IApplicationUnit
+		{
+			for each ( var o : IApplicationUnit in applicationUnits )
+			{
+				if ( o is clazz )
+				{
+					trace ( "return " + 0 );
+					return o;
+				}
+			}
+			throw new Error(" No application unit " + clazz + " in this cafe application context.");
+		}
+		
 		public function postInitialize( context : IApplicationContext ) : void
 		{
 			

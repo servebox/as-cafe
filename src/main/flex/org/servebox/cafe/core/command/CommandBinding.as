@@ -57,6 +57,10 @@ package org.servebox.cafe.core.command
 			clearEvents();
 			_target = value;
 			dispatchEvent( new Event("target_Change") );
+			for each( var e : String in _arTriggerEvents )
+			{
+				_target.addEventListener( e, triggerFired );
+			}
 		}
 		
 		[Bindable]
@@ -93,7 +97,7 @@ package org.servebox.cafe.core.command
 			}
 		}
 		
-		private function triggerFired( e : Event ) : void
+		public function triggerFired( e : Event ) : void
 		{
 			if( _command is IStateCommand && IStateCommand(_command).executable )
 			{
