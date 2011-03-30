@@ -1,5 +1,6 @@
 package org.servebox.cafe.core.command
 {
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
@@ -19,7 +20,7 @@ package org.servebox.cafe.core.command
 		{
 		}
 		
-		public function execute():void
+		public function execute( e : Event = null ) : void
 		{
 		}
 	}

@@ -101,7 +101,7 @@ package org.servebox.cafe.core.command
 		{
 			if( _command is IStateCommand && IStateCommand(_command).executable )
 			{
-				_command.execute();
+				_command.execute( e );
 			}
 		}
 	}
