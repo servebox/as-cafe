@@ -1,5 +1,7 @@
 package org.servebox.cafe.core.modularity
 {
+	import flash.utils.getQualifiedClassName;
+	
 	import org.servebox.cafe.core.Container;
 	import org.servebox.cafe.core.application.ApplicationInitializer;
 	import org.servebox.cafe.core.layout.ILayoutArea;
@@ -91,6 +93,11 @@ package org.servebox.cafe.core.modularity
 			{
 				layoutArea.remove(view);
 			}
+		}
+		
+		public function getView( id : String ) : IView
+		{
+			return getContext().getObject(getQualifiedClassName(this) + id );
 		}
 		
 		public function start():void

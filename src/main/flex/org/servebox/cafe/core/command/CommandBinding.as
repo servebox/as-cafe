@@ -18,6 +18,8 @@ package org.servebox.cafe.core.command
 		
 		private var _arTriggerEvents : Array;
 		
+		private var _parameters : Array;
+		
 		private var setterWatcher : ChangeWatcher;
 		
 		public function CommandBinding()
@@ -25,6 +27,16 @@ package org.servebox.cafe.core.command
 			super();
 		}
 		
+		public function get parameters():Array
+		{
+			return _parameters;
+		}
+
+		public function set parameters(value:Array):void
+		{
+			_parameters = value;
+		}
+
 		[Bindable("command_Change")]
 		public function get command():ICommand
 		{
@@ -101,6 +113,7 @@ package org.servebox.cafe.core.command
 		{
 			if( _command is IStateCommand && IStateCommand(_command).executable )
 			{
+				_command.parameters = parameters;
 				_command.execute( e );
 			}
 		}

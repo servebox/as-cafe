@@ -6,5 +6,7 @@ package org.servebox.cafe.core.command
 	public interface ICommand
 	{
 		function execute( e : Event = null ) : void;
+		function set parameters( ar : Array ) : void;
+		function get parameters() : Array;
 	}
 }

@@ -31,8 +31,9 @@
     <classEntry path="org.servebox.cafe.core.spring.IApplicationContext"/>
     <classEntry path="org.servebox.cafe.core.spring.IApplicationContextListener"/>
     <classEntry path="org.servebox.cafe.core.spring.FlexXmlApplicationContext"/>
-    <classEntry path="org.servebox.cafe.core.command.AbstractCommand"/>
     <classEntry path="org.servebox.cafe.core.command.AbstractStateCommand"/>
+    <classEntry path="org.servebox.cafe.core.command.IParameterObject"/>
+    <classEntry path="org.servebox.cafe.core.command.AbstractParameterObject"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
