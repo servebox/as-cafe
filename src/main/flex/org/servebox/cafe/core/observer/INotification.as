@@ -12,7 +12,7 @@ package org.servebox.cafe.core.observer
 	{
 		function getType():String;
 		function setType(value:String):void;
-		function getCargo():*;
-		function setCargo(value:String):void;
+		function getCargo():Object;
+		function setCargo(value:Object):void;
 	}
 }

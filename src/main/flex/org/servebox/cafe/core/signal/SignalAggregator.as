@@ -38,7 +38,7 @@ package org.servebox.cafe.core.signal
 			super.unregisterObserver( ISignalObserver( o ) );			
 		}
 		
-		public function signal( type : String, cargo : Object ) : void
+		public function signal( type : String, cargo : Object = null) : void
 		{
 			super.signalObservers( new Signal(type, cargo) );
 		}

@@ -4,12 +4,17 @@ package org.servebox.cafe.core.command
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
+	import org.servebox.cafe.core.signal.SignalAggregator;
+	
 	public class AbstractStateCommand extends EventDispatcher implements IStateCommand
 	{
 		public function AbstractStateCommand(target:IEventDispatcher=null)
 		{
 			super(target);
 		}
+		
+		[Autowired]
+		public var signalAggregator : SignalAggregator;
 		
 		private var _parameters : Array;
 		

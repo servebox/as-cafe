@@ -11,9 +11,9 @@ package org.servebox.cafe.core.signal
 	import org.servebox.cafe.core.observer.INotification;
 	import org.servebox.cafe.core.observer.Notification;
 	
-	public class Signal extends Notification implements INotification
+	public class Signal extends Notification
 	{
-		public function Signal(type:String, cargo:*)
+		public function Signal(type:String, cargo:Object)
 		{
 			super(type, cargo);
 		}
