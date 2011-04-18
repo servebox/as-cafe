@@ -6,18 +6,24 @@ package org.servebox.cafe.core.modularity
 	import org.servebox.cafe.core.application.ApplicationInitializer;
 	import org.servebox.cafe.core.layout.ILayoutArea;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
+	import org.servebox.cafe.core.observer.AbstractObserver;
+	import org.servebox.cafe.core.signal.ISignalObserver;
+	import org.servebox.cafe.core.signal.SignalAggregator;
 	import org.servebox.cafe.core.spring.IApplicationContext;
 	import org.servebox.cafe.core.spring.IApplicationContextListener;
 	import org.servebox.cafe.core.util.ApplicationUnitUtils;
 	import org.servebox.cafe.core.view.IView;
 
 	
-	public class LocalApplicationUnitImpl implements IApplicationUnit, IApplicationContextListener
+	public class LocalApplicationUnitImpl extends AbstractObserver implements IApplicationUnit, IApplicationContextListener, ISignalObserver
 	{
 		private var _id : String;
 		private var _loadAtStartup  :Boolean = false;
 		private var _configLocations : Array;
 		private var _context : IApplicationContext;
+		
+		[Autowired]
+		public var signalAggregator : SignalAggregator;		
 		
 		public function LocalApplicationUnitImpl()
 		{

@@ -1,6 +1,6 @@
 package org.servebox.cafe.core.observer
 {
-	public class Notification
+	public class Notification implements INotification
 	{
 		private var _type:String;
 		private var _cargo:*;

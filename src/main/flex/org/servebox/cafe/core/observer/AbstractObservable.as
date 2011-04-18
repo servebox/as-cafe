@@ -2,6 +2,9 @@ package org.servebox.cafe.core.observer
 {
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
+	
+	import org.servebox.cafe.core.signal.ISignalObserver;
+	import org.servebox.cafe.core.signal.Signal;
 
 	public class AbstractObservable implements IObservable
 	{
@@ -109,6 +112,27 @@ package org.servebox.cafe.core.observer
 			{
 				o.update( this, notification );
 			}
+		}
+		
+		public function signalObservers( signal : Signal ) : void
+		{
+			var observers : Array = observersDictionary[ getQualifiedClassName( signal ) ] as Array;
+			if( observers == null && observersDictionary[ ALL_NOTIFICATIONS ] != null )
+			{
+				observers = observersDictionary[ ALL_NOTIFICATIONS ] as Array;
+			}
+			else if( observersDictionary[ ALL_NOTIFICATIONS ] != null )
+			{
+				observers = observers.concat( observersDictionary[ ALL_NOTIFICATIONS ] );
+			}
+			else if ( observers == null )
+			{
+				observers = [];
+			}
+			for each(var o : ISignalObserver in observers )
+			{
+				o.update( this, signal );
+			}			
 		}
 
 	}
