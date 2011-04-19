@@ -92,7 +92,14 @@ package org.servebox.cafe.core.observer
 				{
 					for each ( var signalHandler : Function in signalHandlers )
 					{
-						signalHandler.apply( this, [notification.getCargo()] );
+						if ( notification.getCargo() != null )
+						{
+							signalHandler.apply( this, [notification.getCargo()] );
+						}
+						else
+						{
+							signalHandler.apply( this );
+						}
 					}				
 				}
 			}
