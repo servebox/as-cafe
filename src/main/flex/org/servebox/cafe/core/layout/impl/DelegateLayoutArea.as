@@ -32,7 +32,7 @@ package org.servebox.cafe.core.layout.impl
 			{
 				if( _views[i] == view )
 				{
-					_views = _views.slice( i, 1 );
+					_views.splice( i, 1 );
 					break;
 				}
 			}
