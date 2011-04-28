@@ -3,14 +3,17 @@ package org.servebox.cafe.core.observer
 	public class Notification implements INotification
 	{
 		private var _type:String;
-		private var _cargo:Object;
+		private var _cargoList:Array;
 		
 		/**
 		* Creates a new Notification object.
 		*/
-		public function Notification( type:String, cargo:Object ){
+		public function Notification( type:String, cargo : * = null){
 		 	this._type = type;
-		 	this._cargo = cargo;
+			if( cargo != null )
+			{
+			 	this._cargoList = [cargo];
+			}
 	 	}
 		
 		public function getType():String
@@ -22,14 +25,14 @@ package org.servebox.cafe.core.observer
 		{
 			_type = value;
 		}		
-		public function getCargo():Object
+		public function getCargoList():Array
 		{
-			return _cargo;
+			return _cargoList;
 		}
 		
-		public function setCargo(value:Object):void
+		public function setCargoList(valueList:Array):void
 		{
-			_cargo = value;
+			_cargoList = valueList;
 		}
 
  	} 

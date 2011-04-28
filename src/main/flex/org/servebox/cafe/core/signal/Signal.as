@@ -13,7 +13,7 @@ package org.servebox.cafe.core.signal
 	
 	public class Signal extends Notification
 	{
-		public function Signal(type:String, cargo:Object)
+		public function Signal( type:String, cargo : * = null)
 		{
 			super(type, cargo);
 		}

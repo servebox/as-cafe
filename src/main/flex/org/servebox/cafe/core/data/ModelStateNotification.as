@@ -13,7 +13,7 @@ package org.servebox.cafe.core.data
 		
 		public function getModelState() : int
 		{
-			return getCargo() as int;
+			return getCargoList()[0] as int;
 		}
 	}
 }
