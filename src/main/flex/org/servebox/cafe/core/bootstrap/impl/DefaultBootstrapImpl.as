@@ -31,7 +31,6 @@ package org.servebox.cafe.core.bootstrap.impl
 			{
 				if ( o is clazz )
 				{
-					trace ( "return " + 0 );
 					return o;
 				}
 			}
