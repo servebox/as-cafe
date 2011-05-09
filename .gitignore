@@ -1,6 +1,7 @@
-.actionScriptProperties
-.project
-.flexLibProperties
-lib
-.settings
-bin
+actionscript-cafe/.actionScriptProperties
+actionscript-cafe/.project
+actionscript-cafe/.flexLibProperties
+actionscript-cafe/libs/*
+actionscript-cafe/.settings
+actionscript-cafe/bin/*
+*/target/*
