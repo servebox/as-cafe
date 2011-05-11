@@ -28,13 +28,6 @@
 
         <!-- flex4 -->
         <dependency>
-            <groupId>com.adobe.flash.core</groupId>
-            <artifactId>playerglobal</artifactId>
-            <version>4.5.0.17689</version>
-            <scope>provided</scope>
-            <type>swc</type>
-        </dependency>
-        <dependency>
             <groupId>com.adobe.flex.sdkcore</groupId>
             <artifactId>flex</artifactId>
             <version>4.5.0.17689</version>
