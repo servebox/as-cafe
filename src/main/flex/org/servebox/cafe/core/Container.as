@@ -1,12 +1,13 @@
 package org.servebox.cafe.core
 {
 	import flash.utils.Dictionary;
-
+	
 	import org.servebox.cafe.core.application.ICafeApplication;
 	import org.servebox.cafe.core.bootstrap.IBootstrap;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
 	import org.servebox.cafe.core.layout.impl.DefaultLayoutAreaManagerImpl;
 	import org.servebox.cafe.core.modularity.IApplicationUnit;
+	import org.servebox.cafe.core.signal.SignalAggregator;
 	import org.servebox.cafe.core.spring.IApplicationContextListener;
 	import org.servebox.cafe.core.view.IView;
 
@@ -20,6 +21,11 @@ package org.servebox.cafe.core
 		private var _applicationUnitMap : Dictionary;
 		private var _layoutAreaManager : ILayoutAreaManager;
 
+		public function get signalAggregator() : SignalAggregator
+		{
+			return SignalAggregator( application.getContext().getObject("signalAggregator") ); 
+		}
+		
 		public function Container()
 		{
 			if( !allowConstruction )

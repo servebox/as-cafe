@@ -1,11 +1,15 @@
 package org.servebox.cafe.core.layout.impl
 {
+	import flash.events.IEventDispatcher;
+	
 	import mx.collections.ArrayCollection;
 	import mx.core.IVisualElementContainer;
+	import mx.events.FlexEvent;
 	
 	import org.servebox.cafe.core.Container;
 	import org.servebox.cafe.core.layout.ILayoutArea;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
+	import org.servebox.cafe.core.signal.SignalAggregator;
 	import org.servebox.cafe.core.view.IView;
 	
 	public class DelegateLayoutArea implements ILayoutArea
@@ -13,7 +17,7 @@ package org.servebox.cafe.core.layout.impl
 		private var _container : IVisualElementContainer;
 		private var _views : Vector.<IView> = new Vector.<IView>();
 		private var _name : String;
-		
+
 		public function DelegateLayoutArea( container : IVisualElementContainer = null )
 		{
 			this.container = container;
@@ -21,8 +25,16 @@ package org.servebox.cafe.core.layout.impl
 		
 		public function add(view:IView):void
 		{
+			view.addEventListener( FlexEvent.CREATION_COMPLETE, viewCreationCompleteHandler );
 			_views.push( view );
 			container.addElement( view );
+		}
+		
+		protected function viewCreationCompleteHandler( event : FlexEvent ) : void
+		{
+			trace("SIGNAL : " + event.currentTarget.className + "_LOADED");
+			Container.getInstance().signalAggregator.signal( event.currentTarget.className + "_LOADED" );
+			IEventDispatcher( event.currentTarget ).removeEventListener( FlexEvent.CREATION_COMPLETE, viewCreationCompleteHandler );
 		}
 		
 		public function remove(view:IView):void
