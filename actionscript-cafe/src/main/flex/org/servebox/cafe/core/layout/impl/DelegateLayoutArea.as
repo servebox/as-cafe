@@ -17,7 +17,7 @@ package org.servebox.cafe.core.layout.impl
 		private var _container : IVisualElementContainer;
 		private var _views : Vector.<IView> = new Vector.<IView>();
 		private var _name : String;
-
+		
 		public function DelegateLayoutArea( container : IVisualElementContainer = null )
 		{
 			this.container = container;
