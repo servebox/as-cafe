@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ * Servebox - actionscript-cafe 
+ * 
+ * Copyright 2007 ServeBox - All rights reserved.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    
+		<parent>
+	        <groupId>org.servebox.cafe</groupId>
+			<artifactId>cafe-bundle</artifactId>
+	        <version>0.2-SNAPSHOT</version>
+		</parent>
+		
+        <modelVersion>4.0.0</modelVersion>
+        <artifactId>cafe-net-impl</artifactId>
+        <name>ActionScript Cafe - Net implementation</name>
+        <packaging>swc</packaging>
+
+    <dependencies>
+
+        <!-- flex4 -->
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>core</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>mx</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>authoringsupport</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>textLayout</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>framework</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>rpc</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <!-- Flex Spark -->
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>spark</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>sparkskins</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+            <scope>provided</scope>
+        </dependency>
+        <!-- AIR -->
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>airspark</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>airframework</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.air</groupId>
+            <artifactId>airglobal</artifactId>
+            <version>2.6.0.19120</version>
+            <scope>provided</scope>
+            <type>swc</type>
+        </dependency>
+        <!-- Flex locales -->
+        <dependency>
+            <groupId>com.adobe.flex.locales.en_US</groupId>
+            <artifactId>framework_rb</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.locales.en_US</groupId>
+            <artifactId>mx_rb</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.locales.en_US</groupId>
+            <artifactId>spark_rb</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.locales.en_US</groupId>
+            <artifactId>rpc_rb</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.locales.en_US</groupId>
+            <artifactId>textLayout_rb</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.locales.en_US</groupId>
+            <artifactId>playerglobal_rb</artifactId>
+            <version>4.5.0.20967</version>
+            <type>swc</type>
+        </dependency>
+
+        <!-- ASDoc -->
+        <dependency>
+            <groupId>org.servebox.flex.asdoc</groupId>
+            <artifactId>servebox-template</artifactId>
+            <version>0.2</version>
+            <type>zip</type>
+            <scope>provided</scope>
+        </dependency>
+        <!-- TEST -->
+        <dependency>
+            <groupId>com.adobe.flexunit</groupId>
+            <artifactId>flexunit4</artifactId>
+            <version>1.0-RC</version>
+            <scope>test</scope>
+            <type>swc</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.servebox.cafe</groupId>
+            <artifactId>actionscript-cafe</artifactId>
+            <version>${version}</version>
+            <type>swc</type>
+        </dependency>
+      
+    </dependencies>
+
+</project>
