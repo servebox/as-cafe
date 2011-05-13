@@ -18,6 +18,7 @@
 		<modules>
 			<module>actionscript-cafe</module>
 			<module>cafe-java-commons</module>
+			<module>cafe-net-impl</module>
 		</modules>
 
         <build>
