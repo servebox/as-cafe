@@ -1,16 +1,17 @@
 package org.servebox.cafe.core
 {
 	import flash.utils.Dictionary;
-
+	
 	import org.servebox.cafe.core.application.ICafeApplication;
 	import org.servebox.cafe.core.bootstrap.IBootstrap;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
 	import org.servebox.cafe.core.layout.impl.DefaultLayoutAreaManagerImpl;
 	import org.servebox.cafe.core.modularity.IApplicationUnit;
+	import org.servebox.cafe.core.signal.SignalAggregator;
 	import org.servebox.cafe.core.spring.IApplicationContextListener;
 	import org.servebox.cafe.core.view.IView;
-
-
+	
+	
 	public class Container implements IApplicationContextListener
 	{
 		private static var allowConstruction : Boolean = false;
@@ -19,7 +20,12 @@ package org.servebox.cafe.core
 		private var _bootstrap : IBootstrap;
 		private var _applicationUnitMap : Dictionary;
 		private var _layoutAreaManager : ILayoutAreaManager;
-
+		
+		public function get signalAggregator() : SignalAggregator
+		{
+			return SignalAggregator( application.getContext().getObject("signalAggregator") ); 
+		}
+		
 		public function Container()
 		{
 			if( !allowConstruction )
@@ -27,7 +33,7 @@ package org.servebox.cafe.core
 				throw new Error("Bootstrap should be created using the Bootstrap.create method.");
 			}
 		}
-
+		
 		public static function create( application : ICafeApplication ) : void
 		{
 			if( getInstance() != null )
@@ -40,20 +46,20 @@ package org.servebox.cafe.core
 			instance.application = application;
 			instance.prepare();
 		}
-
+		
 		private function prepare() : void
 		{
 			application.getContext().setListener( this );
 			application.getContext().load();
 		}
-
+		
 		private function run() : void
 		{
 			// initializeLogging();
 			bootstrap();
 			createShell();
 		}
-
+		
 		private function bootstrap() : void
 		{
 			_bootstrap = getBootstrap();
@@ -66,7 +72,7 @@ package org.servebox.cafe.core
 			// Performs additional bootstrap tasks, if required
 			_bootstrap.postInitialize( application.getContext() );
 		}
-
+		
 		// FIXME Change to vector
 		private function registerApplicationUnits( units : Array /*Vector.<ApplicationUnit>*/ ) : void
 		{
@@ -83,17 +89,17 @@ package org.servebox.cafe.core
 				}
 			}
 		}
-
+		
 		private function createShell() : void
 		{
 			application.addElement( IView( application.getContext().getObject("shellView") ) );
 		}
-
+		
 		public function getBootstrap() : IBootstrap
 		{
 			return IBootstrap( application.getContext().getObject("bootstrap") );
 		}
-
+		
 		public function getLayoutAreaManager() : ILayoutAreaManager
 		{
 			if( _layoutAreaManager )
@@ -111,12 +117,12 @@ package org.servebox.cafe.core
 			}
 			return _layoutAreaManager;
 		}
-
+		
 		public function applicationContextReady() : void
 		{
 			run();
 		}
-
+		
 		public static function getInstance() : Container
 		{
 			return instance;
