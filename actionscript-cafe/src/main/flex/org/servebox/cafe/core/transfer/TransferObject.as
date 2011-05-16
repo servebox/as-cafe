@@ -9,7 +9,7 @@
 package org.servebox.cafe.core.transfer
 {
 	[Bindable]
-	[RemoteClass(alias="org.servebox.cafe.core.transfer.TransferObject")]
+	[RemoteClass(alias="org.servebox.cafe.transfer.TransferObject")]
 	/**
 	 * Transfer Object used as a data carrier, to return data to the client
 	 */

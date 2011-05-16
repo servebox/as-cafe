@@ -9,7 +9,7 @@
 package org.servebox.cafe.core.transfer
 {
 	[Bindable]
-	[RemoteClass(alias="org.servebox.cafe.core.transfer.TransferObjectHeader")]
+	[RemoteClass(alias="org.servebox.cafe.transfer.TransferObjectHeader")]
 	/**
 	 * See transfert object.
 	 */
