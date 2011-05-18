@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
- * Servebox - actionscript-cafe 
- * 
- * Copyright 2007 ServeBox - All rights reserved.
--->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    
-		<parent>
-	        <groupId>org.servebox.cafe</groupId>
-			<artifactId>cafe-bundle</artifactId>
-	        <version>0.2-SNAPSHOT</version>
-		</parent>
-		
-        <modelVersion>4.0.0</modelVersion>
-        <artifactId>cafe-net-impl</artifactId>
-        <name>ActionScript Cafe - Net implementation</name>
-        <packaging>swc</packaging>
+<!-- * Servebox - actionscript-cafe * * Copyright 2007 ServeBox - All rights 
+    reserved. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>org.servebox.cafe</groupId>
+        <artifactId>cafe-bundle</artifactId>
+        <version>0.2-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>cafe-net-impl</artifactId>
+    <name>ActionScript Cafe - Net implementation</name>
+    <packaging>swc</packaging>
+
+    <properties>
+        <!-- AS3Commons -->
+        <as3commons-lang.version>0.3</as3commons-lang.version>
+    </properties>
 
     <dependencies>
 
@@ -145,13 +148,44 @@
             <type>swc</type>
         </dependency>
 
+        <!-- AS3-common -->
+        <dependency>
+            <groupId>org.as3commons</groupId>
+            <artifactId>as3commons-lang</artifactId>
+            <version>${as3commons-lang.version}</version>
+            <type>swc</type>
+            <scope>external</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.adobe.flex.framework</groupId>
+                    <artifactId>flex</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.adobe.flex.framework</groupId>
+                    <artifactId>framework</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.adobe.flex.framework</groupId>
+                    <artifactId>rpc</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.adobe.flex.framework</groupId>
+                    <artifactId>playerglobal</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.adobe.flexunit</groupId>
+                    <artifactId>flexunit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <dependency>
             <groupId>org.servebox.cafe</groupId>
             <artifactId>actionscript-cafe</artifactId>
             <version>${version}</version>
             <type>swc</type>
         </dependency>
-      
+
     </dependencies>
 
 </project>
