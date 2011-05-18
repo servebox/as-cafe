@@ -8,8 +8,9 @@ package org.servebox.cafe.core.model
 	import org.servebox.cafe.core.observer.IObservable;
 	import org.servebox.cafe.core.observer.IObserver;
 	import org.servebox.cafe.core.observer.Notification;
+	import org.servebox.cafe.core.signal.ISignalObserver;
 
-	public class PresentationModel extends AbstractObserver
+	public class PresentationModel extends AbstractObserver implements ISignalObserver
 	{
 
 		

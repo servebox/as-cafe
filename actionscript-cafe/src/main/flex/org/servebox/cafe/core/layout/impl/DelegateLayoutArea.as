@@ -23,11 +23,21 @@ package org.servebox.cafe.core.layout.impl
 			this.container = container;
 		}
 		
-		public function add(view:IView):void
+		public function add(view:IView, cleanBefore : Boolean = true):void
 		{
+			if ( cleanBefore )
+			{
+				cleanAllViews();
+			}
 			view.addEventListener( FlexEvent.CREATION_COMPLETE, viewCreationCompleteHandler );
 			_views.push( view );
 			container.addElement( view );
+		}
+		
+		protected function cleanAllViews() : void
+		{
+			container.removeAllElements();
+			_views = new Vector.<IView>();
 		}
 		
 		protected function viewCreationCompleteHandler( event : FlexEvent ) : void

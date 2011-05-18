@@ -8,6 +8,7 @@ package org.servebox.cafe.core
 	import org.servebox.cafe.core.layout.impl.DefaultLayoutAreaManagerImpl;
 	import org.servebox.cafe.core.modularity.IApplicationUnit;
 	import org.servebox.cafe.core.signal.SignalAggregator;
+	import org.servebox.cafe.core.spring.IApplicationContext;
 	import org.servebox.cafe.core.spring.IApplicationContextListener;
 	import org.servebox.cafe.core.view.IView;
 	
@@ -32,6 +33,11 @@ package org.servebox.cafe.core
 			{
 				throw new Error("Bootstrap should be created using the Bootstrap.create method.");
 			}
+		}
+		
+		public function getContext() : IApplicationContext
+		{
+			return application.getContext();
 		}
 		
 		public static function create( application : ICafeApplication ) : void

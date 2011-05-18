@@ -101,10 +101,12 @@ package org.servebox.cafe.core.modularity
 			}
 		}
 		
+		
 		public function getView( id : String ) : IView
 		{
 			return getContext().getObject(getQualifiedClassName(this) + id );
 		}
+		
 		
 		public function start():void
 		{
