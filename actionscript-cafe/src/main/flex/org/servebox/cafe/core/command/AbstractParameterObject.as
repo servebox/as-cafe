@@ -2,8 +2,10 @@ package org.servebox.cafe.core.command
 {
 	public dynamic class AbstractParameterObject implements IParameterObject
 	{
-		public function AbstractParameterObject()
+		public function AbstractParameterObject( keyParam : String = "", valueParam : Object = null )
 		{
+			_key = keyParam;
+			_value = valueParam;
 		}
 		
 		private var _key : String;

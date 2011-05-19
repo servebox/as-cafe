@@ -7,7 +7,7 @@ package org.servebox.cafe.core.layout
 
 	public interface ILayoutArea
 	{
-		function add( view : IView , cleanBefore : Boolean = true ) : void;
+		function add( view : IView ) : void;
 		function remove( view : IView ) : void;
 		function get container() : IVisualElementContainer;
 		function getViews() : ArrayCollection;

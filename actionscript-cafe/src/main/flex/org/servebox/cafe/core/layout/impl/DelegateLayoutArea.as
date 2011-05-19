@@ -1,16 +1,21 @@
 package org.servebox.cafe.core.layout.impl
 {
+	import flash.events.Event;
 	import flash.events.IEventDispatcher;
 	
 	import mx.collections.ArrayCollection;
 	import mx.core.IVisualElementContainer;
+	import mx.events.ChildExistenceChangedEvent;
 	import mx.events.FlexEvent;
 	
+	import org.flexunit.internals.namespaces.classInternal;
 	import org.servebox.cafe.core.Container;
 	import org.servebox.cafe.core.layout.ILayoutArea;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
 	import org.servebox.cafe.core.signal.SignalAggregator;
 	import org.servebox.cafe.core.view.IView;
+	
+	import spark.events.ElementExistenceEvent;
 	
 	public class DelegateLayoutArea implements ILayoutArea
 	{
@@ -23,13 +28,10 @@ package org.servebox.cafe.core.layout.impl
 			this.container = container;
 		}
 		
-		public function add(view:IView, cleanBefore : Boolean = true):void
+		public function add(view:IView):void
 		{
-			if ( cleanBefore )
-			{
-				cleanAllViews();
-			}
-			view.addEventListener( FlexEvent.CREATION_COMPLETE, viewCreationCompleteHandler );
+			cleanAllViews();
+			IEventDispatcher( container ).addEventListener( ElementExistenceEvent.ELEMENT_ADD, viewCreationCompleteHandler );
 			_views.push( view );
 			container.addElement( view );
 		}
@@ -40,11 +42,11 @@ package org.servebox.cafe.core.layout.impl
 			_views = new Vector.<IView>();
 		}
 		
-		protected function viewCreationCompleteHandler( event : FlexEvent ) : void
+		protected function viewCreationCompleteHandler( event : ElementExistenceEvent ) : void
 		{
-			trace("SIGNAL : " + event.currentTarget.className + "_LOADED");
-			Container.getInstance().signalAggregator.signal( event.currentTarget.className + "_LOADED" );
-			IEventDispatcher( event.currentTarget ).removeEventListener( FlexEvent.CREATION_COMPLETE, viewCreationCompleteHandler );
+			trace("SIGNAL : " + Object(event.element).className + "_LOADED");
+			Container.getInstance().signalAggregator.signal( Object(event.element).className + "_LOADED" );
+			IEventDispatcher( container ).removeEventListener( ElementExistenceEvent.ELEMENT_ADD, viewCreationCompleteHandler );
 		}
 		
 		public function remove(view:IView):void
