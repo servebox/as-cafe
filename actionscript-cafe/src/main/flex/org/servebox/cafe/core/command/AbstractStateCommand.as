@@ -29,6 +29,10 @@ package org.servebox.cafe.core.command
 		
 		public function get parameters():Array
 		{
+			if ( _parameters == null )
+			{
+				_parameters = new Array();
+			}
 			return _parameters;
 		}
 		
@@ -52,6 +56,12 @@ package org.servebox.cafe.core.command
 				throw new Error("No parameter " + key + " in " + this + " command, check command binding ");
 			}
 			return paramToReturn;
+		}
+		
+		public function addParameter( key : String , value : Object ) : void
+		{
+			var param : AbstractParameterObject = new AbstractParameterObject( key, value );
+			parameters.push( param );
 		}
 		
 		public function execute( e : Event = null ) : void
