@@ -1,18 +1,13 @@
 package org.servebox.cafe.core.layout.impl
 {
-	import flash.events.Event;
 	import flash.events.IEventDispatcher;
 	
 	import mx.collections.ArrayCollection;
 	import mx.core.IVisualElementContainer;
-	import mx.events.ChildExistenceChangedEvent;
-	import mx.events.FlexEvent;
 	
-	import org.flexunit.internals.namespaces.classInternal;
 	import org.servebox.cafe.core.Container;
 	import org.servebox.cafe.core.layout.ILayoutArea;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
-	import org.servebox.cafe.core.signal.SignalAggregator;
 	import org.servebox.cafe.core.view.IView;
 	
 	import spark.events.ElementExistenceEvent;
