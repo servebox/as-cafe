@@ -78,7 +78,6 @@ package org.servebox.cafe.core.observer
 			{
 				observers = [ o ];
 				observersDictionary[ key ] = observers;
-				trace("Add observer " + key + " observers " + observers.length );
 			}
 			else 
 			{
@@ -90,10 +89,7 @@ package org.servebox.cafe.core.observer
 					}
 				}
 				observersDictionary[ key ].push( o );
-				trace("Add observer " + key + "  push " + o );
 			}
-			
-			trace( "observer is " + getQualifiedClassName( this ) );
 		}
 		
 		
@@ -134,11 +130,6 @@ package org.servebox.cafe.core.observer
 		
 		public function signalObservers( signal : Signal ) : void
 		{
-			trace( "observer is " + getQualifiedClassName( this ) );
-			
-			trace( "signal Obser " + signal.getType() );
-			
-			trace(" observersDictionary[ signal.getType() ] " + observersDictionary[ signal.getType() ] );
 			var observers : Array = observersDictionary[ signal.getType() ] as Array;
 			if( observers == null && observersDictionary[ ALL_NOTIFICATIONS ] != null )
 			{

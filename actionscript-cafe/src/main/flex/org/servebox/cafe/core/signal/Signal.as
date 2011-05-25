@@ -11,6 +11,7 @@ package org.servebox.cafe.core.signal
 	import org.servebox.cafe.core.observer.INotification;
 	import org.servebox.cafe.core.observer.Notification;
 	
+	[ExcludeClass]
 	public class Signal extends Notification
 	{
 		public function Signal( type:String, cargo : * = null)
