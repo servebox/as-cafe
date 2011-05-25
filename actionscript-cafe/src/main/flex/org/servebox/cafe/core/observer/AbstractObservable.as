@@ -56,28 +56,46 @@ package org.servebox.cafe.core.observer
 					}
 				}
 			} else {
-				// Label label_filters
-				label_filters : for each( var notificationFilter : Class in notificationFilters )
-				{
-					if( observersDictionary[ getQualifiedClassName( notificationFilter ) ] == null )
-					{
-						observers = [ o ];
-						observersDictionary[ getQualifiedClassName( notificationFilter ) ] = observers;
-					}
-					else 
-					{
-						observers = observersDictionary[ getQualifiedClassName( notificationFilter ) ] as Array;
-						for each( obs in observers )
-						{
-							if( obs == o ){
-								continue label_filters;
-							}
-						}
-						observersDictionary[ getQualifiedClassName( notificationFilter )].push( o );
-					}
-				}
+				handleFilters(o,notificationFilters);
 			}
 		}
+		
+
+		protected function handleFilters(o : IObserver, notificationFilters : Array = null) : void
+		{
+			// Label label_filters
+			for each( var notificationFilter : Class in notificationFilters )
+			{
+				addObserver(o,getQualifiedClassName(notificationFilter));
+			}
+		}
+		
+		
+		protected function addObserver(o : IObserver, key : String ) : void
+		{
+			var observers : Array;
+			if( observersDictionary[ key ] == null )
+			{
+				observers = [ o ];
+				observersDictionary[ key ] = observers;
+				trace("Add observer " + key + " observers " + observers.length );
+			}
+			else 
+			{
+				observers = observersDictionary[ key ] as Array;
+				for each( var obs : IObserver in observers )
+				{
+					if( obs == o ){
+						return;
+					}
+				}
+				observersDictionary[ key ].push( o );
+				trace("Add observer " + key + "  push " + o );
+			}
+			
+			trace( "observer is " + getQualifiedClassName( this ) );
+		}
+		
 		
 		public function unregisterObserver( o : IObserver ) : void
 		{
@@ -116,7 +134,12 @@ package org.servebox.cafe.core.observer
 		
 		public function signalObservers( signal : Signal ) : void
 		{
-			var observers : Array = observersDictionary[ getQualifiedClassName( signal ) ] as Array;
+			trace( "observer is " + getQualifiedClassName( this ) );
+			
+			trace( "signal Obser " + signal.getType() );
+			
+			trace(" observersDictionary[ signal.getType() ] " + observersDictionary[ signal.getType() ] );
+			var observers : Array = observersDictionary[ signal.getType() ] as Array;
 			if( observers == null && observersDictionary[ ALL_NOTIFICATIONS ] != null )
 			{
 				observers = observersDictionary[ ALL_NOTIFICATIONS ] as Array;

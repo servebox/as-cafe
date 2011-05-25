@@ -40,6 +40,8 @@ package org.servebox.cafe.core.signal
 		
 		public function signal( type : String, ... cargo) : void
 		{
+			
+			
 			if( cargo.length > 0 )
 			{
 				var signal : Signal = new Signal(type);
@@ -51,6 +53,16 @@ package org.servebox.cafe.core.signal
 				super.signalObservers( new Signal(type) );
 			}
 		}
+		
+		override protected function handleFilters(o : IObserver, notificationFilters : Array = null) : void
+		{
+			// Label label_filters
+			for each( var notificationFilter : String in notificationFilters )
+			{
+				addObserver(o,notificationFilter);
+			}
+		}
+
 		
 	}
 }
