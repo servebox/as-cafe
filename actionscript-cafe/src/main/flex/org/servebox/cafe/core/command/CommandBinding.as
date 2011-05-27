@@ -14,8 +14,6 @@ package org.servebox.cafe.core.command
 		
 		private var _target : IEventDispatcher;
 		
-		private var _triggerEvents : String;
-		
 		private var _arTriggerEvents : Array;
 		
 		private var _parameters : Array;
@@ -66,38 +64,52 @@ package org.servebox.cafe.core.command
 
 		public function set target(value:IEventDispatcher):void
 		{
-			clearEvents();
+            clearEvents( _target );
 			_target = value;
+            replaceEvents();
 			dispatchEvent( new Event("target_Change") );
-			for each( var e : String in _arTriggerEvents )
-			{
-				_target.addEventListener( e, triggerFired );
-			}
+			
 		}
 		
 		[Bindable]
 		public function get triggerEvents():String
 		{
-			return _triggerEvents;
+            if (_arTriggerEvents == null)
+            {
+               _arTriggerEvents = []; 
+            }
+			return _arTriggerEvents.join(",");
 		}
 
 		public function set triggerEvents(value:String):void
 		{
-			clearEvents();
-			_triggerEvents = value;
 			_arTriggerEvents = value.split(",");
+            replaceEvents();
 		}
 
-		private function clearEvents() : void
+		private function replaceEvents() : void
+        {
+            clearEvents();
+            if( _target != null )
+            {
+                for each( var e : String in _arTriggerEvents )
+                {
+                    _target.addEventListener( e, triggerFired );
+                }
+            }
+        }
+        
+		private function clearEvents( targetOverride : IEventDispatcher = null) : void
 		{
-			if( _target == null )
+            var t : IEventDispatcher = ( targetOverride != null ? targetOverride : _target);
+			if( t == null )
 			{
 				// The target invoker is not set, no need to clear the events.
 				return;
 			}
 			for each( var e : String in _arTriggerEvents )
 			{
-				_target.removeEventListener( e, triggerFired );
+				t.removeEventListener( e, triggerFired );
 			}
 		}
 		
