@@ -8,6 +8,8 @@ package org.servebox.cafe.core.layout.impl
 	import org.servebox.cafe.core.Container;
 	import org.servebox.cafe.core.layout.ILayoutArea;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
+	import org.servebox.cafe.core.view.ILoadView;
+	import org.servebox.cafe.core.view.IUnloadView;
 	import org.servebox.cafe.core.view.IView;
 	
 	import spark.events.ElementExistenceEvent;
@@ -33,6 +35,13 @@ package org.servebox.cafe.core.layout.impl
 		
 		protected function cleanAllViews() : void
 		{
+			for(var i : int = 0; i < _views.length; i++ )
+			{
+				if( _views[i] is IUnloadView )
+				{
+					IUnloadView( _views[i] ).unload(); 
+				}
+			}
 			container.removeAllElements();
 			_views = new Vector.<IView>();
 		}
@@ -41,6 +50,10 @@ package org.servebox.cafe.core.layout.impl
 		{
 			trace("SIGNAL : " + Object(event.element).className + "_LOADED");
 			Container.getInstance().signalAggregator.signal( Object(event.element).className + "_LOADED" );
+			if ( event.element is ILoadView )
+			{
+				ILoadView( event.element ).load(); 
+			}
 			IEventDispatcher( container ).removeEventListener( ElementExistenceEvent.ELEMENT_ADD, viewCreationCompleteHandler );
 		}
 		
