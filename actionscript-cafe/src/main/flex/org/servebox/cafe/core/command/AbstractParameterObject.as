@@ -1,6 +1,9 @@
 package org.servebox.cafe.core.command
 {
-	public dynamic class AbstractParameterObject implements IParameterObject
+	import flash.events.Event;
+	import flash.events.EventDispatcher;
+
+	public dynamic class AbstractParameterObject extends EventDispatcher implements IParameterObject
 	{
 		public function AbstractParameterObject( keyParam : String = "", valueParam : Object = null )
 		{
@@ -23,9 +26,11 @@ package org.servebox.cafe.core.command
 		
 		public function set value(v:Object): void
 		{
-			_value = v;	
+			_value = v;
+			dispatchEvent( new Event("valueChange") );
 		}
 		
+		[Bindable("valueChange")]
 		public function get value():Object
 		{
 			return _value;

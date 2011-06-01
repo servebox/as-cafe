@@ -1,18 +1,11 @@
 /*
- * Servebox ActionScript Commons / $Id: ClassUtils.as 56 2007-03-23 17:08:45Z J.F.Mathiot $
- * 
- * Copyright 2006 ServeBox Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
- * either express or implied. See the License for the specific language governing permissions
- * and limitations under the License.
- */
- 
+* actionscript-cafe ClassUtils 18 avr. 2011 adesmarais
+* 
+* Created by Servebox 
+* Copyright 2010 Servebox (c) All rights reserved. You may not use, distribute
+* or modify this code under its source or binary form
+* without the express authorization of ServeBox. Contact : info@servebox.com
+*/
 package org.servebox.cafe.core.util
 {
 	import flash.utils.getQualifiedClassName;

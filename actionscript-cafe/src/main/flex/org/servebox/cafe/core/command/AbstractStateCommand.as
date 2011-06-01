@@ -3,6 +3,7 @@ package org.servebox.cafe.core.command
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
+	import flash.utils.Dictionary;
 	
 	import org.servebox.cafe.core.signal.SignalAggregator;
 	
@@ -65,6 +66,13 @@ package org.servebox.cafe.core.command
 		public function addParameter( key : String , value : Object ) : void
 		{
 			var param : AbstractParameterObject = new AbstractParameterObject( key, value );
+			for each ( var existingParam : AbstractParameterObject in parameters )
+			{
+				if ( existingParam.key == key )
+				{
+					parameters.splice( parameters.indexOf( existingParam ), 1 ); 
+				}
+			}
 			parameters.push( param );
 		}
 		
