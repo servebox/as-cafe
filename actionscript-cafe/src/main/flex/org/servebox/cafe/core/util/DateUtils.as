@@ -225,5 +225,17 @@ package org.servebox.cafe.core.util
 			return range;
 		}
 		
+		public static function getDayNumber( date : Date ) : int
+		{
+			if ( date.day == 0 )
+			{
+				return 7;
+			}
+			else
+			{
+				return date.day;
+			}
+		}
+		
 	}
 }
