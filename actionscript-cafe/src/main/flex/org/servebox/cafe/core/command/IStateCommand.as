@@ -8,5 +8,7 @@ package org.servebox.cafe.core.command
 		function get executable() : Boolean;
 		
 		function set executable( value :Boolean ) : void;
+		
+		function addParameter( key : String , value : Object ) : void;
 	}
 }
