@@ -123,7 +123,7 @@ package org.servebox.cafe.core.command
 		
 		public function triggerFired( e : Event ) : void
 		{
-			if( _command is IStateCommand && IStateCommand(_command).executable )
+			if( !(_command is IStateCommand) || IStateCommand(_command).executable )
 			{
 				_command.parameters = parameters;
 				_command.execute( e );

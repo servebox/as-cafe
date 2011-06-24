@@ -5,3 +5,4 @@ actionscript-cafe/libs/*
 actionscript-cafe/.settings
 actionscript-cafe/bin/*
 */target/*
+.metadata
