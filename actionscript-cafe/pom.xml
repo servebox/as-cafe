@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.servebox.cafe</groupId>
         <artifactId>cafe-bundle</artifactId>
-        <version>0.2-SNAPSHOT</version>
+        <version>0.2</version>
     </parent>
     <packaging>swc</packaging>
 
