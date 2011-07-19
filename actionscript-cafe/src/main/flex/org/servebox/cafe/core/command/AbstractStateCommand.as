@@ -54,10 +54,13 @@ package org.servebox.cafe.core.command
 					{
 						//parameter can be null
 					}
-					else if ( paramToReturn.value == null )
+					else 
 					{
-						throw new Error("Parameter value for " + key + " in " + this + " is null, check command binding ");
-					}
+						if ( paramToReturn.value == null )
+						{
+							throw new Error("Parameter value for " + key + " in " + this + " is null, check command binding ");
+						}
+					}	
 				}
 			}
 			if ( !paramToReturn )
