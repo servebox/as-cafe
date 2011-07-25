@@ -3,8 +3,9 @@ package org.servebox.cafe.core.application
 	import mx.events.FlexEvent;
 	
 	import org.servebox.cafe.core.Container;
-	import org.servebox.cafe.core.spring.IApplicationContext;
 	import org.servebox.cafe.core.spring.FlexXmlApplicationContext;
+	import org.servebox.cafe.core.spring.FlexXmlEmbeddedApplicationContext;
+	import org.servebox.cafe.core.spring.IApplicationContext;
 	
 	import spark.components.Application;
 
