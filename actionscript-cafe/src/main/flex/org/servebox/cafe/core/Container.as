@@ -72,7 +72,7 @@ package org.servebox.cafe.core
 			// Initialize the bootstrap
 			_bootstrap.initialize( application.getContext() );
 			// Register the applicative modules
-			//
+			// now wait for run().... ( ensure shell is created )
 			// Performs additional bootstrap tasks, if required
 			_bootstrap.postInitialize( application.getContext() );
 		}

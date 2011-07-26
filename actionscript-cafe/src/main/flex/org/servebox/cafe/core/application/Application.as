@@ -14,30 +14,21 @@ package org.servebox.cafe.core.application
 		
 		public var useEmbeddedContext : Boolean;
 		
-		private var _defaultEmbeddedContextClazz : Class;
-		
-		private var _embeddedApplicationContexts : Dictionary = new Dictionary();
-		
 		public function Application()
 		{
 			super();
 			ApplicationInitializer.prepare( this );
 			
-			if ( useEmbeddedContext )
+			if ( !useEmbeddedContext )
 			{
 				_context = ApplicationInitializer.getDefaultContext()
 			}
-			else
-			{
-				// use defaultEmbeddedContextClazz
-			}
 		}
 		
-		public function set defaultEmbeddedContextClazz(value:Class):void
+		public function set cafeContext( embeddedContext : Class ) : void
 		{
 			_context = new FlexXmlApplicationContext();
-			FlexXmlApplicationContext( _context ).addEmbeddedConfig( value );
-			//_context.load();
+			FlexXmlApplicationContext( _context ).addEmbeddedConfig( embeddedContext );
 		}
 
 		public function getContext():IApplicationContext
