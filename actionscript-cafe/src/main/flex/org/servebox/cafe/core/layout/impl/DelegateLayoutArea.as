@@ -43,9 +43,11 @@ package org.servebox.cafe.core.layout.impl
 				if( _views[i] is IUnloadView )
 				{
 					IUnloadView( _views[i] ).unload(); 
-					remove( _views[i] );
+					Container.getInstance().signalAggregator.signal( Object(_views[i]).className + "_UNLOADED" );
+					//remove( _views[i] );
 				}
 			}
+			container.removeAllElements();
 			_views = new Vector.<IView>();
 		}
 		
@@ -59,6 +61,7 @@ package org.servebox.cafe.core.layout.impl
 			IEventDispatcher( container ).removeEventListener( ElementExistenceEvent.ELEMENT_ADD, viewCreationCompleteHandler );
 		}
 		
+		// TODO, check this usefull ?
 		public function remove(view:IView):void
 		{
 			container.removeElement( view );
