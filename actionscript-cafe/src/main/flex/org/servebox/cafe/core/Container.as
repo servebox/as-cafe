@@ -2,6 +2,8 @@ package org.servebox.cafe.core
 {
 	import flash.utils.Dictionary;
 	
+	import mx.events.FlexEvent;
+	
 	import org.servebox.cafe.core.application.ICafeApplication;
 	import org.servebox.cafe.core.bootstrap.IBootstrap;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
@@ -63,8 +65,19 @@ package org.servebox.cafe.core
 		{
 			bootstrap();
 			createShell();
-			registerApplicationUnits( _bootstrap.applicationUnits );
 		}
+		
+		private function createShell() : void
+		{
+			var shell : IView = IView( application.getContext().getObject("shellView") );
+			shell.addEventListener( FlexEvent.CONTENT_CREATION_COMPLETE , handleCreateShellComplete );
+			application.addElement( shell );
+		}
+		
+		private function handleCreateShellComplete( e : FlexEvent ) : void
+		{
+			registerApplicationUnits( _bootstrap.applicationUnits );
+		}		
 		
 		private function bootstrap() : void
 		{
@@ -100,11 +113,6 @@ package org.servebox.cafe.core
 			{
 				unit.prepare( application.getContext() );
 			}
-		}
-		
-		private function createShell() : void
-		{
-			application.addElement( IView( application.getContext().getObject("shellView") ) );
 		}
 		
 		public function getBootstrap() : IBootstrap
