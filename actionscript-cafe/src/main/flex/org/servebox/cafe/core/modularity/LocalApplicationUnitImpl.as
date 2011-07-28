@@ -83,6 +83,7 @@ package org.servebox.cafe.core.modularity
 		public function prepare(parentContext:IApplicationContext):void
 		{
 			signalAggregator.registerObserver( this );
+			//signalAggregator.signal( _id + "_PREPARING");
 			initializeContext( parentContext );
 			// Should we do that ? I guess so
 			getContext().setListener( this );
@@ -92,6 +93,7 @@ package org.servebox.cafe.core.modularity
 		public function applicationContextReady() : void
 		{
 			start();
+			//signalAggregator.signal( _id + "_STARTED");
 		}
 		
 		public function getLayoutAreaManager() : ILayoutAreaManager
@@ -108,12 +110,10 @@ package org.servebox.cafe.core.modularity
 			}
 		}
 		
-		
 		public function getView( id : String ) : IView
 		{
 			return getContext().getObject( id );
 		}
-		
 		
 		public function start():void
 		{

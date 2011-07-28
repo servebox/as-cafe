@@ -90,6 +90,7 @@ package org.servebox.cafe.core.modularity
 		public function prepare(parentContext:IApplicationContext):void
 		{
 			signalAggregator.registerObserver( this );
+			//signalAggregator.signal( _id + "_PREPARING");
 			var contextClazz : Class = getEmbeddedContextClazz();
 			_context = new FlexXmlApplicationContext(null, parentContext);
 			initializeContext( parentContext );
@@ -113,6 +114,7 @@ package org.servebox.cafe.core.modularity
 		public function applicationContextReady() : void
 		{
 			start();
+			//signalAggregator.signal( _id + "_STARTED");
 		}
 		
 		public function getLayoutAreaManager() : ILayoutAreaManager
