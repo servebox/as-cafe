@@ -1,4 +1,4 @@
-package org.servebox.cafe.core.command
+package org.servebox.cafe.core.command.impl
 {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -7,6 +7,10 @@ package org.servebox.cafe.core.command
 	import mx.binding.utils.BindingUtils;
 	import mx.binding.utils.ChangeWatcher;
 	import mx.core.UIComponent;
+	
+	import org.servebox.cafe.core.command.ICommand;
+	import org.servebox.cafe.core.command.IParameterizableCommand;
+	import org.servebox.cafe.core.command.IStateCommand;
 	
 	public class CommandBinding extends EventDispatcher
 	{
@@ -125,7 +129,10 @@ package org.servebox.cafe.core.command
 		{
 			if( !(_command is IStateCommand) || IStateCommand(_command).executable )
 			{
-				_command.parameters = parameters;
+				if( _command is IParameterizableCommand )
+				{
+					IParameterizableCommand(_command ).parameters = parameters;
+				}
 				_command.execute( e );
 			}
 		}

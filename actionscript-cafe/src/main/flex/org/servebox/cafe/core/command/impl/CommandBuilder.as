@@ -1,9 +1,11 @@
-package org.servebox.cafe.core.command
+package org.servebox.cafe.core.command.impl
 {
+	import org.servebox.cafe.core.command.IParameterizableCommand;
+
 	public class CommandBuilder
 	{
 		
-		public static function executeParametersCommand( command : IStateCommand, parameters : Array ) : void
+		public static function executeParametersCommand( command : IParameterizableCommand, parameters : Array ) : void
 		{
 			command.parameters = [];
 			for each ( var param : Object in parameters )
@@ -13,7 +15,7 @@ package org.servebox.cafe.core.command
 			command.execute();
 		}
 		
-		public static function executeCommand( command : IStateCommand, key : String, value : Object ) : void
+		public static function executeCommand( command : IParameterizableCommand, key : String, value : Object ) : void
 		{
 			command.parameters = [buildParam( key, value) ];
 			command.execute();				

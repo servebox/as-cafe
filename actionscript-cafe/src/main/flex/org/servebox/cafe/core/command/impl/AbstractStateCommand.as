@@ -1,14 +1,19 @@
-package org.servebox.cafe.core.command
+package org.servebox.cafe.core.command.impl
 {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-	import flash.utils.Dictionary;
 	
+	import org.servebox.cafe.core.command.INullableParameterObject;
+	import org.servebox.cafe.core.command.IParameterObject;
+	import org.servebox.cafe.core.command.IParameterizableCommand;
+	import org.servebox.cafe.core.command.IStateCommand;
 	import org.servebox.cafe.core.signal.SignalAggregator;
 	
-	public class AbstractStateCommand extends EventDispatcher implements IStateCommand
+	public class AbstractStateCommand extends EventDispatcher implements IStateCommand, IParameterizableCommand
 	{
+		private var _parameters : Array;
+		
 		public function AbstractStateCommand(target:IEventDispatcher=null)
 		{
 			super(target);
@@ -16,8 +21,6 @@ package org.servebox.cafe.core.command
 		
 		[Autowired]
 		public var signalAggregator : SignalAggregator;
-		
-		private var _parameters : Array;
 		
 		public function get executable():Boolean
 		{
@@ -40,12 +43,12 @@ package org.servebox.cafe.core.command
 		public function set parameters(value:Array):void
 		{
 			_parameters = value;
-		}		
+		}
 		
 		protected function getParameter( key : String ) : IParameterObject
 		{
 			var paramToReturn : IParameterObject;
-			for each ( var param : IParameterObject in _parameters )
+			for each ( var param : IParameterObject in parameters )
 			{
 				if ( param.key == key )
 				{

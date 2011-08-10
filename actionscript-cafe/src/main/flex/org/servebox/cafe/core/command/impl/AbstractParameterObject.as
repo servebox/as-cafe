@@ -1,7 +1,8 @@
-package org.servebox.cafe.core.command
+package org.servebox.cafe.core.command.impl
 {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
+	import org.servebox.cafe.core.command.IParameterObject;
 
 	public dynamic class AbstractParameterObject extends EventDispatcher implements IParameterObject
 	{

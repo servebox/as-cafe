@@ -1,6 +1,7 @@
-package org.servebox.cafe.core.command
+package org.servebox.cafe.core.command.impl
 {
 	import flash.events.Event;
+	import org.servebox.cafe.core.command.ICommand;
 	
 	public class DelegateCommand implements ICommand
 	{
