@@ -8,6 +8,9 @@
 */
 package org.servebox.cafe.core.signal
 {
+	import mx.logging.ILogger;
+	import mx.logging.Log;
+	
 	import org.servebox.cafe.core.observer.AbstractObservable;
 	import org.servebox.cafe.core.observer.IObservable;
 	import org.servebox.cafe.core.observer.IObserver;
@@ -16,9 +19,7 @@ package org.servebox.cafe.core.signal
 	public class SignalAggregator extends AbstractObservable
 	{
 		
-		public function SignalAggregator()
-		{
-		}
+		public var log : ILogger = Log.getLogger("SignalAggregator");
 		
 		override public function registerObserver(o:IObserver, notificationFilters:Array=null):void
 		{
@@ -40,7 +41,7 @@ package org.servebox.cafe.core.signal
 		
 		public function signal( type : String, ... cargo) : void
 		{
-			
+			log.info("SignalAggregator runs " + type );
 			
 			if( cargo.length > 0 )
 			{

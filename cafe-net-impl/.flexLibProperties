@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties
+                                        version="3">
+            <includeClasses>
+                            <classEntry path="org.servebox.cafe.net.URLUtils"/>
+                            <classEntry path="org.servebox.cafe.net.IBusinessResponder"/>
+                            <classEntry path="org.servebox.cafe.net.BusinessDelegateServiceError"/>
+                            <classEntry path="org.servebox.cafe.net.ServiceLocator"/>
+                            <classEntry path="org.servebox.cafe.net.ChannelSetProvider"/>
+                            <classEntry path="org.servebox.cafe.net.AbstractBusinessDelegate"/>
+                            <classEntry path="org.servebox.cafe.net.ServiceAlreadyRegisteredError"/>
+                            <classEntry path="org.servebox.cafe.net.IBusinessDelegate"/>
+                            <classEntry path="org.servebox.cafe.net.ServiceNotFoundError"/>
+                    </includeClasses>
+        <includeResources>
+                                </includeResources>
+        <namespaceManifests>
+                    </namespaceManifests>
+    </flexLibProperties>

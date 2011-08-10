@@ -5,6 +5,7 @@ actionscript-cafe/libs/*
 actionscript-cafe/.settings
 actionscript-cafe/bin/*
 */target/*
+.metadata
 cafe-net-impl/.actionScriptProperties
 cafe-net-impl/.flexLibProperties
 cafe-net-impl/.project

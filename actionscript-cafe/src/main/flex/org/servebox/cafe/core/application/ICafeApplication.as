@@ -8,5 +8,6 @@ package org.servebox.cafe.core.application
 	public interface ICafeApplication extends IVisualElementContainer
 	{
 		function getContext() : IApplicationContext;
+		function set cafeContext( embeddedContext : Class ) : void
 	}
 }

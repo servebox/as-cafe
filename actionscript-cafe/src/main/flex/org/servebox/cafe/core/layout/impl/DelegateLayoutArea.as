@@ -4,6 +4,8 @@ package org.servebox.cafe.core.layout.impl
 	
 	import mx.collections.ArrayCollection;
 	import mx.core.IVisualElementContainer;
+	import mx.logging.ILogger;
+	import mx.logging.Log;
 	
 	import org.servebox.cafe.core.Container;
 	import org.servebox.cafe.core.layout.ILayoutArea;
@@ -16,6 +18,7 @@ package org.servebox.cafe.core.layout.impl
 	
 	public class DelegateLayoutArea implements ILayoutArea
 	{
+		public var log : ILogger = Log.getLogger( "DelegateLayoutArea" );
 		private var _container : IVisualElementContainer;
 		private var _views : Vector.<IView> = new Vector.<IView>();
 		private var _name : String;
@@ -40,6 +43,8 @@ package org.servebox.cafe.core.layout.impl
 				if( _views[i] is IUnloadView )
 				{
 					IUnloadView( _views[i] ).unload(); 
+					Container.getInstance().signalAggregator.signal( Object(_views[i]).className + "_UNLOADED" );
+					//remove( _views[i] );
 				}
 			}
 			container.removeAllElements();
@@ -48,7 +53,6 @@ package org.servebox.cafe.core.layout.impl
 		
 		protected function viewCreationCompleteHandler( event : ElementExistenceEvent ) : void
 		{
-			trace("SIGNAL : " + Object(event.element).className + "_LOADED");
 			Container.getInstance().signalAggregator.signal( Object(event.element).className + "_LOADED" );
 			if ( event.element is ILoadView )
 			{
@@ -57,9 +61,11 @@ package org.servebox.cafe.core.layout.impl
 			IEventDispatcher( container ).removeEventListener( ElementExistenceEvent.ELEMENT_ADD, viewCreationCompleteHandler );
 		}
 		
+		// TODO, check this usefull ?
 		public function remove(view:IView):void
 		{
 			container.removeElement( view );
+			Container.getInstance().signalAggregator.signal( Object(view).className + "_UNLOADED" );
 			for(var i : int = 0; i < _views.length; i++ )
 			{
 				if( _views[i] == view )

@@ -2,6 +2,8 @@ package org.servebox.cafe.core
 {
 	import flash.utils.Dictionary;
 	
+	import mx.events.FlexEvent;
+	
 	import org.servebox.cafe.core.application.ICafeApplication;
 	import org.servebox.cafe.core.bootstrap.IBootstrap;
 	import org.servebox.cafe.core.layout.ILayoutAreaManager;
@@ -61,10 +63,21 @@ package org.servebox.cafe.core
 		
 		private function run() : void
 		{
-			// initializeLogging();
 			bootstrap();
 			createShell();
 		}
+		
+		private function createShell() : void
+		{
+			var shell : IView = IView( application.getContext().getObject("shellView") );
+			shell.addEventListener( FlexEvent.CONTENT_CREATION_COMPLETE , handleCreateShellComplete );
+			application.addElement( shell );
+		}
+		
+		private function handleCreateShellComplete( e : FlexEvent ) : void
+		{
+			registerApplicationUnits( _bootstrap.applicationUnits );
+		}		
 		
 		private function bootstrap() : void
 		{
@@ -72,9 +85,7 @@ package org.servebox.cafe.core
 			// Initialize the bootstrap
 			_bootstrap.initialize( application.getContext() );
 			// Register the applicative modules
-			registerApplicationUnits( _bootstrap.applicationUnits );
-			// Register the application model : could this be done using autowiring ? I guess so...
-			//var models : Vector.<PresentationModel> = bootstrap.getPresentationModels( application.getMainContext() );
+			// now wait for run().... ( ensure shell is created )
 			// Performs additional bootstrap tasks, if required
 			_bootstrap.postInitialize( application.getContext() );
 		}
@@ -83,7 +94,6 @@ package org.servebox.cafe.core
 		private function registerApplicationUnits( units : Array /*Vector.<ApplicationUnit>*/ ) : void
 		{
 			// Creating the application units definitions map
-			// TODO Should be delegated to another object ?
 			_applicationUnitMap = new Dictionary();
 			for each( var unit : IApplicationUnit in units )
 			{
@@ -96,9 +106,13 @@ package org.servebox.cafe.core
 			}
 		}
 		
-		private function createShell() : void
+		public function prepareApplicationUnit( id : String ) : void
 		{
-			application.addElement( IView( application.getContext().getObject("shellView") ) );
+			var unit : IApplicationUnit = _applicationUnitMap[ id ];
+			if ( unit != null && !unit.isStarted )
+			{
+				unit.prepare( application.getContext() );
+			}
 		}
 		
 		public function getBootstrap() : IBootstrap

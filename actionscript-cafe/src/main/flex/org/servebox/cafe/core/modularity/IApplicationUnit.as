@@ -12,5 +12,6 @@ package org.servebox.cafe.core.modularity
 		function set configLocations( value : Array ) : void;
 		function prepare( parentContext : IApplicationContext/*, listener : ApplicationUnitListener*/ ) : void;
 		function start( /*listener : ApplicationUnitListener*/ ) : void;
+		function get isStarted() : Boolean;
 	}
 }
