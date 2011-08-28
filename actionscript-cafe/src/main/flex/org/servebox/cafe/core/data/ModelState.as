@@ -5,7 +5,7 @@ package org.servebox.cafe.core.data
 		/**
 		 * The model is currently fetching data.
 		 */
-		public static const FETCHING : int = 0;
+		public static const FETCHING : int = 1;
 
 		/**
 		 * The data have been retrieved.
@@ -15,6 +15,6 @@ package org.servebox.cafe.core.data
 		/**
 		 * The model is in unconsistent state.
 		 */
-		public static const INVALID : int = 0;
+		public static const INVALID : int = 2;
 	}
 }
