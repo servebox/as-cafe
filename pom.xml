@@ -10,7 +10,7 @@
 
         <groupId>org.servebox.cafe</groupId>
         <artifactId>cafe-bundle</artifactId>
-        <version>0.5-SNAPSHOT</version>
+        <version>0.5.0</version>
 
         <name>Servebox Actionscript Cafe Bundle Project</name>
         <packaging>pom</packaging>
